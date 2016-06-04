@@ -1,7 +1,9 @@
 import unittest
 import sys
 
-sys.path.append("../scripts")
+import os
+SCRIPTS = os.path.abspath(os.path.join(__file__, "..", "..", "scripts"))
+sys.path.append(SCRIPTS)
 import gutenberg_filter
 
 class TestGutenbergFilter(unittest.TestCase):

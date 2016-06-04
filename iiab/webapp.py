@@ -2,10 +2,13 @@ from flask import Flask, url_for
 from flask.ext.babel import Babel
 from flask.ext.autoindex import AutoIndex
 import sys
-import urlparse
+try:
+    from urllib.parse import urljoin # Python 3
+except ImportError:
+    from urlparse import urljoin     # Python 2
 
-from config import config
-import top_views
+from .config import config
+from . import top_views
 import search_views
 import map_views
 import video_views
@@ -74,7 +77,7 @@ def create_app(debug=True, enable_profiler=False, profiler_quiet=False, enable_t
         root = app.config.get('STATIC_ROOT', None)
         if root is None:  # fallback on the normal way
             return url_for('static', filename=path)
-        return urlparse.urljoin(root, path)
+        return urljoin(root, path)
 
     @app.context_processor
     def inject_static():

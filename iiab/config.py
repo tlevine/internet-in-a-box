@@ -3,10 +3,13 @@
 import os
 import platform
 
-from ConfigParser import SafeConfigParser
+try:
+    from configparser import SafeConfigParser # Python 3
+except ImportError:
+    from ConfigParser import SafeConfigParser # Python 2
 from json import dumps, loads
 
-from utils import run_mount
+from .utils import run_mount
 
 
 global_config = None

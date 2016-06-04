@@ -3,7 +3,7 @@ from flask import (Blueprint, make_response, render_template,
                    send_file, redirect, abort, Markup)
 from flask.ext.babel import gettext as _
 
-from config import config
+from .config import config
 from utils import mdns_resolve
 
 blueprint = Blueprint('top_views', __name__,
@@ -77,5 +77,5 @@ def redirect_view():
 
 @blueprint.route('test')
 def test():
-    print "TEST"
+    print("TEST")
     return make_response((send_file('/var/www/foo.webm', mimetype="video/webm"), 200, {'Accept-Ranges': 'bytes'}))

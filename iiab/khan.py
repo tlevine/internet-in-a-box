@@ -3,6 +3,10 @@ import re
 import os
 import string
 
+try:
+    unicode
+except NameError:
+    unicode = str
 
 def split_path(path):
     """Parse a full file pathname into its components.
@@ -80,7 +84,7 @@ def getchildren(tree, s):
     r = {}
     name, e = get(tree, s)
     r['breadcrumbs'] = getpath(tree, s)
-    if type(e) in [str, str]:
+    if type(e) in [str, unicode]:
         r['file'] = e
     else:  # dict
         r['children'] = [(idx, subtree[0]) for (idx, subtree) in list(e.items())]

@@ -25,6 +25,11 @@ from progressbar import ProgressBar, Percentage, Bar, ETA
 # For rendering HTML to text for indexing
 from html2text import html2text
 
+try:
+    unicode
+except NameError:
+    unicode = str
+
 logger = logging.getLogger()
 
 ZIM_CACHE_SIZE = 1024
@@ -38,7 +43,7 @@ def article_info_as_unicode(articles):
         # Make any strings into unicode objects
         for k,v in list(article_info.items()):
             if type(v) is str:
-                article_info[k] = str(v)
+                article_info[k] = unicode(v)
         yield article_info
 
 def content_as_text(zim_obj, article_info, index):

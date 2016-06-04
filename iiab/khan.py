@@ -140,16 +140,16 @@ def make_symlinks(webm_root, h264_root, symlink_root, extension=".webm"):
     """The purpose of building a tree of symlinks is to that the front end
     web server can serve the video files directly, allowing Accept-Ranges
     and other features to work with the finicky video browser clients"""
-    webm_root = str(webm_root)
-    h264_root = str(h264_root)
+    webm_root = unicode(webm_root)
+    h264_root = unicode(h264_root)
     paths = find(webm_root, extension)
     paths.sort()  # always get a consistent category order
     cats = [split_path(x) for x in paths]
     cats = assign_number_to_top_categories(cats)
     syms = map_symlinks(cats, paths)
     for src, dst in syms:
-        webm_src = str(os.path.join(webm_root, src))
-        webm_dst = str(os.path.join(symlink_root, dst)) + ".webm"
+        webm_src = unicode(os.path.join(webm_root, src))
+        webm_dst = unicode(os.path.join(symlink_root, dst)) + ".webm"
         directory = os.path.split(webm_dst)[0]
         if not os.path.exists(directory):
             os.makedirs(directory)

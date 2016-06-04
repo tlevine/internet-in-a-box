@@ -6,6 +6,11 @@ from whoosh import scoring
 from .whoosh_multi_field_spelling_correction import MultiFieldQueryCorrector
 from . import pagination_helper
 
+try:
+    unicode
+except NameError:
+    unicode = str
+
 def index_directory_path(base_path, zim_name):
     """Returns the directory where a ZIM file's index should be located, given
     a base path where all the index files are located as well as a filename
@@ -56,7 +61,7 @@ def paginated_search(ix, search_columns, query_text, page=1, pagelen=20, sort_co
     pagelen specifies number of hits per page
     page specifies page of results (first page is 1)
     """
-    query_text = str(query_text)  # Must be unicode
+    query_text = unicode(query_text)  # Must be unicode
 
     with ix.searcher(weighting=weighting) as searcher:
         query = MultifieldParser(search_columns, ix.schema).parse(query_text)

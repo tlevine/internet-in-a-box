@@ -10,6 +10,12 @@ from optparse import OptionParser
 from pluralize import pluralize # locally provided function
 from gutenberg_filter import GutenbergIndexFilter
 
+try:
+    unicode
+except NameError:
+    unicode = str
+    str = bytes
+
 class GutenbergDbCreator:
     # schema dictionary format:
     #   { TABLE_NAME : [ (COL1, DEF1), (COL2, DEF2), ... ] }

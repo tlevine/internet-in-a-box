@@ -12,6 +12,12 @@ from .kiwix import Library
 from . import timepro
 import babel.numbers
 
+try:
+    unicode
+except NameError:
+    unicode = str
+    str = bytes
+
 blueprint = Blueprint('wikipedia_views', __name__,
                       template_folder='templates')
 

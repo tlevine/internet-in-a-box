@@ -6,6 +6,10 @@ from whoosh import sorting
 
 from .utils import whoosh2dict
 
+try:
+    unicode
+except NameError:
+    unicode = str
 
 class MapSearch(object):
     def __init__(self, index_dir):
@@ -19,7 +23,7 @@ class MapSearch(object):
         page specifies the page of results to return (first page is 1)
         Set pagelen = None or 0 to retrieve all results.
         """
-        query = str(query)  # Must be unicode
+        query = unicode(query)  # Must be unicode
         population_sort_facet = sorting.FieldFacet("population", reverse=True)
         ix = whoosh_open_dir_32_or_64(self.index_dir)
         with ix.searcher() as searcher:
@@ -42,7 +46,7 @@ class MapSearch(object):
 
     def count(self, query):
         """Return total number of matching documents in index"""
-        query = str(query)  # Must be unicode
+        query = unicode(query)  # Must be unicode
         ix = whoosh_open_dir_32_or_64(self.index_dir)
         with ix.searcher() as searcher:
             query = QueryParser("title", ix.schema).parse(query)

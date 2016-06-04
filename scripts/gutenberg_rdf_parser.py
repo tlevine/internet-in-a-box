@@ -4,6 +4,12 @@ import sys
 from lxml import etree
 from bz2 import BZ2File
 
+try:
+    unicode
+except NameError:
+    unicode = str
+    str = bytes
+
 
 # Identify record as either a book descriptor or a file descriptor
 REC_TYPE_KEY = "record_type"
@@ -51,7 +57,7 @@ def get_nested_content(element):
     """
     if len(element) == 0:
         if element.text is not None:
-            return [str(element.text)]
+            return [unicode(element.text)]
         else:
             print(element.tag + " has no content")
             return []
@@ -77,7 +83,7 @@ def get_content(etext, tag, nsmap):
     for element in tag_iter:
         if len(element) == 0:
             if element.text is not None:
-                content.append(str(element.text))
+                content.append(unicode(element.text))
         else:
             content.extend(get_nested_content(element))
 
@@ -131,7 +137,7 @@ def parse_rdf(src, filter=None):
         if event == 'end' and element.tag == ETEXT_TAG:
             assert(root is not None)
         
-            record = { REC_TYPE_KEY : DESCRIPTION_TYPE_VALUE, REC_ETEXT_ID : str(element.attrib[ID_ATTRIB]) }
+            record = { REC_TYPE_KEY : DESCRIPTION_TYPE_VALUE, REC_ETEXT_ID : unicode(element.attrib[ID_ATTRIB]) }
             for xmltag, rectag in list(ETEXT_MAPPINGS.items()):
                 content = get_content(element, xmltag, root.nsmap)
                 if len(content) == 1:
@@ -146,7 +152,7 @@ def parse_rdf(src, filter=None):
             # http://www.gutenberg.org/dir seems to equate to /knowledge/data/gutenberg/gutenberg
             # http://www.gutenberg.org/cache seems to equate to generated content not available via mirror 
             # but separately rsync'd from the web and stored at /knowledge/data/gutenberg/cache.
-            record = { REC_TYPE_KEY : FILE_TYPE_VALUE, REC_FILE_PATH : str(element.attrib[ABOUT_ATTRIB]) }
+            record = { REC_TYPE_KEY : FILE_TYPE_VALUE, REC_FILE_PATH : unicode(element.attrib[ABOUT_ATTRIB]) }
             for xmltag, rectag in list(FILE_MAPPINGS.items()):
                 if xmltag == FORMATOF_TAG:
                     content = element.find(xmltag, namespaces=root.nsmap).attrib[RDF_RESOURCE_ATTRIB]

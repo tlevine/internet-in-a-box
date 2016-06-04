@@ -1,12 +1,17 @@
 from subprocess import call
 from timeit import timeit, repeat
+try:
+    from urllib.request import urlretrieve
+except ImportError:
+    from urllib import urlretrieve
 
 # for most consistent results check that SQLALCHEMY_ECHO disabled,
 # stdout echo disabled on profiler if profiling is enabled and
 # debug is disabled.
 
 def download_details(textId):
-    call(["/usr/bin/wget", "-q", "-O", "/dev/null", "http://127.0.0.1:25000/iiab/books/text/%s/details" % textId])
+    url = "http://127.0.0.1:25000/iiab/books/text/%s/details" % textId
+    urlretrieve(url, "/dev/null")
 
 def do_test(textId):
     print(("testing " + textId))

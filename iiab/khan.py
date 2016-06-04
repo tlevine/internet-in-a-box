@@ -70,10 +70,13 @@ def get(tree, s):
     tuple of indices such as (1, 3, 2).  Returns None if not found."""
     if len(s) == 0:
         return 'top', tree
-    name, e = tree[s[0]]
-    if len(s) == 1:
-        return name, e
-    return get(e, s[1:])
+    elif s[0] in tree:
+        name, e = tree[s[0]]
+        if len(s) == 1:
+            return name, e
+        return get(e, s[1:])
+    else:
+        return None, {}
 
 
 def getchildren(tree, s):

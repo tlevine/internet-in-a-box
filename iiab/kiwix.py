@@ -2,13 +2,13 @@
 
 from xml.etree import ElementTree as etree
 from base64 import b64decode
-import iso639
+from . import iso639
 import os
 
 def clean_book(book):
     """Fixes up the book data"""
     clean_book = {}
-    for k, v in book.items():
+    for k, v in list(book.items()):
         if k == "favicon":
             v = b64decode(v)
         elif k == "mediaCount":
@@ -48,7 +48,7 @@ class Library(object):
             et = etree.parse(f)
             root = et.getroot()
             self.books = root.findall("book")
-        self.books = map(clean_book, self.books)
+        self.books = list(map(clean_book, self.books))
 
     def find_by_uuid(self, uuid):
         for book in self.books:
@@ -75,6 +75,6 @@ class Library(object):
                 'articleCount': articles,
                 'self.books': self.books
             }
-        langs = langs.values()
+        langs = list(langs.values())
         langs.sort(key=lambda x: -x['articleCount'])
         return langs

@@ -3,10 +3,10 @@
 import os
 import platform
 
-from ConfigParser import SafeConfigParser
+from configparser import SafeConfigParser
 from json import dumps, loads
 
-from utils import run_mount
+from .utils import run_mount
 
 
 global_config = None

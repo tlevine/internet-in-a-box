@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template, session, jsonify
-from config import config
+from .config import config
 from iiab import __version__
 
 blueprint = Blueprint('settings', __name__,
@@ -30,7 +30,7 @@ def languages_dict():
     return langs
 
 def current_locale():
-    accepted_langs = languages_dict().keys()
+    accepted_langs = list(languages_dict().keys())
     preferred_language = session.get("preferred_language", None)
     if preferred_language != None:
         return preferred_language
@@ -55,7 +55,7 @@ def user_language():
 
     if request.form.get('language', None) != None:
         lang = request.form['language']
-        if not languages_dict().has_key(lang):
+        if lang not in languages_dict():
             return jsonify(result="not_found")
         else:
             session['preferred_language'] = lang

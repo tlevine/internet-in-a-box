@@ -5,11 +5,11 @@ import time
 
 from flask import Blueprint, render_template
 
-from config import config
-from zimpy import ZimFile
-from iso639 import iso6392
-from kiwix import Library
-import timepro
+from .config import config
+from .zimpy import ZimFile
+from .iso639 import iso6392
+from .kiwix import Library
+from . import timepro
 import babel.numbers
 
 blueprint = Blueprint('wikipedia_views', __name__,
@@ -36,7 +36,7 @@ def organize_books_by_language(filenames, library_file):
         # Make sure book has metadata, if not look up in kiwix library
         # This solution allows us to add zim files not in the kiwix library
         # while still having a backup for files that do not have metadata
-        if not book_data.has_key('language'):
+        if 'language' not in book_data:
             logger.info("No metadata, looking for book in kiwix library: %s" % zim_fn)
             book_data = kiwix_lib.find_by_uuid(zim_obj.get_kiwix_uuid())
             if book_data == None:
@@ -44,7 +44,7 @@ def organize_books_by_language(filenames, library_file):
                 continue
 
         # Decode strings from UTF-8 into unicode objects
-        for k,v in book_data.items():
+        for k,v in list(book_data.items()):
             if type(v) is str:
                 book_data[k] = v.decode('utf-8')
 
@@ -54,9 +54,9 @@ def organize_books_by_language(filenames, library_file):
         book_data['articleCount'] = babel.numbers.format_number(articleCount)
         book_data['humanReadableId'] = os.path.splitext(os.path.basename(zim_fn))[0]
 
-        if not languages.has_key(book_data['language']):
+        if book_data['language'] not in languages:
             lang_data = {}
-            if iso6392.has_key(book_data['language']):
+            if book_data['language'] in iso6392:
                 lang_data['languageEnglish'] = iso6392[book_data['language']]['english']
             else:
                 lang_data['languageEnglish'] = "Unknown: " + book_data['language']
@@ -70,7 +70,7 @@ def organize_books_by_language(filenames, library_file):
         lang_data['books'].append(book_data)
         lang_data['articleCount'] = lang_data['articleCount'] + articleCount
 
-    langs = languages.values()
+    langs = list(languages.values())
     langs.sort(key=lambda x: -x['articleCount'])
     return langs
 

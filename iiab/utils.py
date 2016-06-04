@@ -41,7 +41,7 @@ def whoosh2dict(hits):
     m = []
     for hit in hits:
         d = {}
-        for k, v in hit.items():
+        for k, v in list(hit.items()):
             d[k] = v
         m.append(d)
     return m

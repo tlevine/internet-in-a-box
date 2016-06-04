@@ -12,14 +12,14 @@ import json
 from contextlib import closing
 
 from .extensions import db
-from gutenberg_models import (GutenbergBook, GutenbergFile,
+from .gutenberg_models import (GutenbergBook, GutenbergFile,
                               GutenbergCreator, gutenberg_books_creator_map)
-from gutenberg_content import find_htmlz, find_epub
-from config import config
+from .gutenberg_content import find_htmlz, find_epub
+from .config import config
 
-from whoosh_search import paginated_search
+from .whoosh_search import paginated_search
 from whoosh.index import open_dir
-from utils import whoosh_open_dir_32_or_64
+from .utils import whoosh_open_dir_32_or_64
 
 from .endpoint_description import EndPointDescription
 
@@ -79,7 +79,7 @@ def search():
 @gutenberg.route('/mirror/<path:filename>')
 def gutenberg_mirror(filename):
     mirror_dir = config().get_path('GUTENBERG', 'gutenberg_mirror')
-    print "mirror", mirror_dir, filename
+    print("mirror", mirror_dir, filename)
     r = send_from_directory(mirror_dir, filename)
     return make_response(r, 200, {'Accept-Ranges': 'bytes'})
 
@@ -93,7 +93,7 @@ def author_to_query(author):
     """
     # contributor field provides extra details about contirbutor's role in brackets -- strip that off so we can search for author in any role.
     author = re.sub(r'\[[^\]]+\]', '', author).strip()
-    return u'creator:"{0}" OR contributor:"{0}"'.format(author)
+    return 'creator:"{0}" OR contributor:"{0}"'.format(author)
 
 
 @gutenberg.route('/titles')
@@ -165,8 +165,8 @@ def text(textId):
     # if blueprint has a different static_folder specified we might need to use blueprint.static_folder but currently None
     for x in record.gutenberg_files:
         if not mirror_exists(x):
-            print "WARNING: Gutenberg file " + mirror_path(x.file) + " not found"
-    record.gutenberg_files = filter(mirror_exists, record.gutenberg_files)
+            print("WARNING: Gutenberg file " + mirror_path(x.file) + " not found")
+    record.gutenberg_files = list(filter(mirror_exists, record.gutenberg_files))
 
     pgid = textId2number(textId)
     if find_htmlz(pgid) is not None:
@@ -236,10 +236,10 @@ def autocomplete():
 
 def get_autocomplete_matches(prefix, limit=10):
     def get_prefix_like(prefix):
-        (result, _) = re.subn(r'\\', u'\\\\', prefix)
-        (result, _) = re.subn(r'_', u'\_', result)
-        (result, _) = re.subn(r'%', u'\%', result)
-        (result, _) = re.subn(r'\s+', u'%', result)
+        (result, _) = re.subn(r'\\', '\\\\', prefix)
+        (result, _) = re.subn(r'_', '\_', result)
+        (result, _) = re.subn(r'%', '\%', result)
+        (result, _) = re.subn(r'\s+', '%', result)
         return '%' + result + '%'
 
     def make_sql(colname, tablename, limit):

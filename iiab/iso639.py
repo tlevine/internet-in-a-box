@@ -51,14 +51,14 @@ iso6392 = {
     "oss": {
         "terminologic": "", 
         "alpha2": "os", 
-        "french": "oss\u00e8te", 
+        "french": "oss\\u00e8te", 
         "bibliographic": "oss", 
         "english": "Ossetian; Ossetic"
     }, 
     "ale": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "al\u00e9oute", 
+        "french": "al\\u00e9oute", 
         "bibliographic": "ale", 
         "english": "Aleut"
     }, 
@@ -72,7 +72,7 @@ iso6392 = {
     "sco": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "\u00e9cossais", 
+        "french": "\\u00e9cossais", 
         "bibliographic": "sco", 
         "english": "Scots"
     }, 
@@ -86,7 +86,7 @@ iso6392 = {
     "gd": {
         "terminologic": "", 
         "alpha2": "gd", 
-        "french": "ga\u00e9lique; ga\u00e9lique \u00e9cossais", 
+        "french": "ga\\u00e9lique; ga\\u00e9lique \\u00e9cossais", 
         "bibliographic": "gla", 
         "english": "Gaelic; Scottish Gaelic"
     }, 
@@ -191,7 +191,7 @@ iso6392 = {
     "to": {
         "terminologic": "", 
         "alpha2": "to", 
-        "french": "tongan (\u00celes Tonga)", 
+        "french": "tongan (\\u00celes Tonga)", 
         "bibliographic": "ton", 
         "english": "Tonga (Tonga Islands)"
     }, 
@@ -205,14 +205,14 @@ iso6392 = {
     "tk": {
         "terminologic": "", 
         "alpha2": "tk", 
-        "french": "turkm\u00e8ne", 
+        "french": "turkm\\u00e8ne", 
         "bibliographic": "tuk", 
         "english": "Turkmen"
     }, 
     "th": {
         "terminologic": "", 
         "alpha2": "th", 
-        "french": "tha\u00ef", 
+        "french": "tha\\u00ef", 
         "bibliographic": "tha", 
         "english": "Thai"
     }, 
@@ -240,7 +240,7 @@ iso6392 = {
     "te": {
         "terminologic": "", 
         "alpha2": "te", 
-        "french": "t\u00e9lougou", 
+        "french": "t\\u00e9lougou", 
         "bibliographic": "tel", 
         "english": "Telugu"
     }, 
@@ -282,7 +282,7 @@ iso6392 = {
     "qaa-qtz": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "r\u00e9serv\u00e9e \u00e0 l'usage local", 
+        "french": "r\\u00e9serv\\u00e9e \\u00e0 l'usage local", 
         "bibliographic": "qaa-qtz", 
         "english": "Reserved for local use"
     }, 
@@ -303,7 +303,7 @@ iso6392 = {
     "fao": {
         "terminologic": "", 
         "alpha2": "fo", 
-        "french": "f\u00e9ro\u00efen", 
+        "french": "f\\u00e9ro\\u00efen", 
         "bibliographic": "fao", 
         "english": "Faroese"
     }, 
@@ -338,7 +338,7 @@ iso6392 = {
     "hye": {
         "terminologic": "hye", 
         "alpha2": "hy", 
-        "french": "arm\u00e9nien", 
+        "french": "arm\\u00e9nien", 
         "bibliographic": "arm", 
         "english": "Armenian"
     }, 
@@ -429,14 +429,14 @@ iso6392 = {
     "mk": {
         "terminologic": "mkd", 
         "alpha2": "mk", 
-        "french": "mac\u00e9donien", 
+        "french": "mac\\u00e9donien", 
         "bibliographic": "mac", 
         "english": "Macedonian"
     }, 
     "nbl": {
         "terminologic": "", 
         "alpha2": "nr", 
-        "french": "nd\u00e9b\u00e9l\u00e9 du Sud", 
+        "french": "nd\\u00e9b\\u00e9l\\u00e9 du Sud", 
         "bibliographic": "nbl", 
         "english": "Ndebele, South; South Ndebele"
     }, 
@@ -534,7 +534,7 @@ iso6392 = {
     "sux": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "sum\u00e9rien", 
+        "french": "sum\\u00e9rien", 
         "bibliographic": "sux", 
         "english": "Sumerian"
     }, 
@@ -548,7 +548,7 @@ iso6392 = {
     "men": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "mend\u00e9", 
+        "french": "mend\\u00e9", 
         "bibliographic": "men", 
         "english": "Mende"
     }, 
@@ -569,7 +569,7 @@ iso6392 = {
     "gla": {
         "terminologic": "", 
         "alpha2": "gd", 
-        "french": "ga\u00e9lique; ga\u00e9lique \u00e9cossais", 
+        "french": "ga\\u00e9lique; ga\\u00e9lique \\u00e9cossais", 
         "bibliographic": "gla", 
         "english": "Gaelic; Scottish Gaelic"
     }, 
@@ -632,7 +632,7 @@ iso6392 = {
     "bod": {
         "terminologic": "bod", 
         "alpha2": "bo", 
-        "french": "tib\u00e9tain", 
+        "french": "tib\\u00e9tain", 
         "bibliographic": "tib", 
         "english": "Tibetan"
     }, 
@@ -646,7 +646,7 @@ iso6392 = {
     "jrb": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "jud\u00e9o-arabe", 
+        "french": "jud\\u00e9o-arabe", 
         "bibliographic": "jrb", 
         "english": "Judeo-Arabic"
     }, 
@@ -681,7 +681,7 @@ iso6392 = {
     "sga": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "irlandais ancien (jusqu'\u00e0 900)", 
+        "french": "irlandais ancien (jusqu'\\u00e0 900)", 
         "bibliographic": "sga", 
         "english": "Irish, Old (to 900)"
     }, 
@@ -737,14 +737,14 @@ iso6392 = {
     "che": {
         "terminologic": "", 
         "alpha2": "ce", 
-        "french": "tch\u00e9tch\u00e8ne", 
+        "french": "tch\\u00e9tch\\u00e8ne", 
         "bibliographic": "che", 
         "english": "Chechen"
     }, 
     "chg": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "djaghata\u00ef", 
+        "french": "djaghata\\u00ef", 
         "bibliographic": "chg", 
         "english": "Chagatai"
     }, 
@@ -800,7 +800,7 @@ iso6392 = {
     "chu": {
         "terminologic": "", 
         "alpha2": "cu", 
-        "french": "slavon d'\u00e9glise; vieux slave; slavon liturgique; vieux bulgare", 
+        "french": "slavon d'\\u00e9glise; vieux slave; slavon liturgique; vieux bulgare", 
         "bibliographic": "chu", 
         "english": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic"
     }, 
@@ -926,7 +926,7 @@ iso6392 = {
     "cai": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "am\u00e9rindiennes de L'Am\u00e9rique centrale, langues", 
+        "french": "am\\u00e9rindiennes de L'Am\\u00e9rique centrale, langues", 
         "bibliographic": "cai", 
         "english": "Central American Indian languages"
     }, 
@@ -982,9 +982,9 @@ iso6392 = {
     "oc": {
         "terminologic": "", 
         "alpha2": "oc", 
-        "french": "occitan (apr\u00e8s 1500); proven\u00e7al", 
+        "french": "occitan (apr\\u00e8s 1500); proven\\u00e7al", 
         "bibliographic": "oci", 
-        "english": "Occitan (post 1500); Proven\u00e7al"
+        "english": "Occitan (post 1500); Proven\\u00e7al"
     }, 
     "tam": {
         "terminologic": "", 
@@ -1017,7 +1017,7 @@ iso6392 = {
     "cze": {
         "terminologic": "ces", 
         "alpha2": "cs", 
-        "french": "tch\u00e8que", 
+        "french": "tch\\u00e8que", 
         "bibliographic": "cze", 
         "english": "Czech"
     }, 
@@ -1052,7 +1052,7 @@ iso6392 = {
     "nyn": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "nyankol\u00e9", 
+        "french": "nyankol\\u00e9", 
         "bibliographic": "nyn", 
         "english": "Nyankole"
     }, 
@@ -1066,7 +1066,7 @@ iso6392 = {
     "gez": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "gu\u00e8ze", 
+        "french": "gu\\u00e8ze", 
         "bibliographic": "gez", 
         "english": "Geez"
     }, 
@@ -1108,7 +1108,7 @@ iso6392 = {
     "fr": {
         "terminologic": "fra", 
         "alpha2": "fr", 
-        "french": "fran\u00e7ais", 
+        "french": "fran\\u00e7ais", 
         "bibliographic": "fre", 
         "english": "French"
     }, 
@@ -1143,7 +1143,7 @@ iso6392 = {
     "lad": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "jud\u00e9o-espagnol", 
+        "french": "jud\\u00e9o-espagnol", 
         "bibliographic": "lad", 
         "english": "Ladino"
     }, 
@@ -1157,7 +1157,7 @@ iso6392 = {
     "snk": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "sonink\u00e9", 
+        "french": "sonink\\u00e9", 
         "bibliographic": "snk", 
         "english": "Soninke"
     }, 
@@ -1171,7 +1171,7 @@ iso6392 = {
     "mac": {
         "terminologic": "mkd", 
         "alpha2": "mk", 
-        "french": "mac\u00e9donien", 
+        "french": "mac\\u00e9donien", 
         "bibliographic": "mac", 
         "english": "Macedonian"
     }, 
@@ -1227,7 +1227,7 @@ iso6392 = {
     "fo": {
         "terminologic": "", 
         "alpha2": "fo", 
-        "french": "f\u00e9ro\u00efen", 
+        "french": "f\\u00e9ro\\u00efen", 
         "bibliographic": "fao", 
         "english": "Faroese"
     }, 
@@ -1241,14 +1241,14 @@ iso6392 = {
     "egy": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "\u00e9gyptien", 
+        "french": "\\u00e9gyptien", 
         "bibliographic": "egy", 
         "english": "Egyptian (Ancient)"
     }, 
     "znd": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "zand\u00e9, langues", 
+        "french": "zand\\u00e9, langues", 
         "bibliographic": "znd", 
         "english": "Zande languages"
     }, 
@@ -1276,7 +1276,7 @@ iso6392 = {
     "sit": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "sino-tib\u00e9taines, langues", 
+        "french": "sino-tib\\u00e9taines, langues", 
         "bibliographic": "sit", 
         "english": "Sino-Tibetan languages"
     }, 
@@ -1290,7 +1290,7 @@ iso6392 = {
     "sv": {
         "terminologic": "", 
         "alpha2": "sv", 
-        "french": "su\u00e9dois", 
+        "french": "su\\u00e9dois", 
         "bibliographic": "swe", 
         "english": "Swedish"
     }, 
@@ -1346,7 +1346,7 @@ iso6392 = {
     "sl": {
         "terminologic": "", 
         "alpha2": "sl", 
-        "french": "slov\u00e8ne", 
+        "french": "slov\\u00e8ne", 
         "bibliographic": "slv", 
         "english": "Slovenian"
     }, 
@@ -1409,7 +1409,7 @@ iso6392 = {
     "vai": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "va\u00ef", 
+        "french": "va\\u00ef", 
         "bibliographic": "vai", 
         "english": "Vai"
     }, 
@@ -1465,7 +1465,7 @@ iso6392 = {
     "geo": {
         "terminologic": "kat", 
         "alpha2": "ka", 
-        "french": "g\u00e9orgien", 
+        "french": "g\\u00e9orgien", 
         "bibliographic": "geo", 
         "english": "Georgian"
     }, 
@@ -1577,9 +1577,9 @@ iso6392 = {
     "nob": {
         "terminologic": "", 
         "alpha2": "nb", 
-        "french": "norv\u00e9gien bokm\u00e5l", 
+        "french": "norv\\u00e9gien bokm\\u00e5l", 
         "bibliographic": "nob", 
-        "english": "Bokm\u00e5l, Norwegian; Norwegian Bokm\u00e5l"
+        "english": "Bokm\\u00e5l, Norwegian; Norwegian Bokm\\u00e5l"
     }, 
     "dak": {
         "terminologic": "", 
@@ -1591,7 +1591,7 @@ iso6392 = {
     "ces": {
         "terminologic": "ces", 
         "alpha2": "cs", 
-        "french": "tch\u00e8que", 
+        "french": "tch\\u00e8que", 
         "bibliographic": "cze", 
         "english": "Czech"
     }, 
@@ -1619,7 +1619,7 @@ iso6392 = {
     "nor": {
         "terminologic": "", 
         "alpha2": "no", 
-        "french": "norv\u00e9gien", 
+        "french": "norv\\u00e9gien", 
         "bibliographic": "nor", 
         "english": "Norwegian"
     }, 
@@ -1640,7 +1640,7 @@ iso6392 = {
     "kpe": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "kpell\u00e9", 
+        "french": "kpell\\u00e9", 
         "bibliographic": "kpe", 
         "english": "Kpelle"
     }, 
@@ -1661,14 +1661,14 @@ iso6392 = {
     "el": {
         "terminologic": "ell", 
         "alpha2": "el", 
-        "french": "grec moderne (apr\u00e8s 1453)", 
+        "french": "grec moderne (apr\\u00e8s 1453)", 
         "bibliographic": "gre", 
         "english": "Greek, Modern (1453-)"
     }, 
     "eo": {
         "terminologic": "", 
         "alpha2": "eo", 
-        "french": "esp\u00e9ranto", 
+        "french": "esp\\u00e9ranto", 
         "bibliographic": "epo", 
         "english": "Esperanto"
     }, 
@@ -1682,14 +1682,14 @@ iso6392 = {
     "map": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "austron\u00e9siennes, langues", 
+        "french": "austron\\u00e9siennes, langues", 
         "bibliographic": "map", 
         "english": "Austronesian languages"
     }, 
     "ee": {
         "terminologic": "", 
         "alpha2": "ee", 
-        "french": "\u00e9w\u00e9", 
+        "french": "\\u00e9w\\u00e9", 
         "bibliographic": "ewe", 
         "english": "Ewe"
     }, 
@@ -1710,7 +1710,7 @@ iso6392 = {
     "mas": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "massa\u00ef", 
+        "french": "massa\\u00ef", 
         "bibliographic": "mas", 
         "english": "Masai"
     }, 
@@ -1808,7 +1808,7 @@ iso6392 = {
     "nic": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "nig\u00e9ro-kordofaniennes, langues", 
+        "french": "nig\\u00e9ro-kordofaniennes, langues", 
         "bibliographic": "nic", 
         "english": "Niger-Kordofanian languages"
     }, 
@@ -1857,7 +1857,7 @@ iso6392 = {
     "ast": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "asturien; bable; l\u00e9onais; asturol\u00e9onais", 
+        "french": "asturien; bable; l\\u00e9onais; asturol\\u00e9onais", 
         "bibliographic": "ast", 
         "english": "Asturian; Bable; Leonese; Asturleonese"
     }, 
@@ -1885,7 +1885,7 @@ iso6392 = {
     "crh": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "tatar de Crim\u00e9", 
+        "french": "tatar de Crim\\u00e9", 
         "bibliographic": "crh", 
         "english": "Crimean Tatar; Crimean Turkish"
     }, 
@@ -1969,7 +1969,7 @@ iso6392 = {
     "tel": {
         "terminologic": "", 
         "alpha2": "te", 
-        "french": "t\u00e9lougou", 
+        "french": "t\\u00e9lougou", 
         "bibliographic": "tel", 
         "english": "Telugu"
     }, 
@@ -1983,7 +1983,7 @@ iso6392 = {
     "zap": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "zapot\u00e8que", 
+        "french": "zapot\\u00e8que", 
         "bibliographic": "zap", 
         "english": "Zapotec"
     }, 
@@ -2025,7 +2025,7 @@ iso6392 = {
     "ton": {
         "terminologic": "", 
         "alpha2": "to", 
-        "french": "tongan (\u00celes Tonga)", 
+        "french": "tongan (\\u00celes Tonga)", 
         "bibliographic": "ton", 
         "english": "Tonga (Tonga Islands)"
     }, 
@@ -2046,7 +2046,7 @@ iso6392 = {
     "kor": {
         "terminologic": "", 
         "alpha2": "ko", 
-        "french": "cor\u00e9en", 
+        "french": "cor\\u00e9en", 
         "bibliographic": "kor", 
         "english": "Korean"
     }, 
@@ -2109,7 +2109,7 @@ iso6392 = {
     "bel": {
         "terminologic": "", 
         "alpha2": "be", 
-        "french": "bi\u00e9lorusse", 
+        "french": "bi\\u00e9lorusse", 
         "bibliographic": "bel", 
         "english": "Belarusian"
     }, 
@@ -2130,7 +2130,7 @@ iso6392 = {
     "ber": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "berb\u00e8res, langues", 
+        "french": "berb\\u00e8res, langues", 
         "bibliographic": "ber", 
         "english": "Berber languages"
     }, 
@@ -2144,7 +2144,7 @@ iso6392 = {
     "sai": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "indiennes d'Am\u00e9rique du Sud, autres langues", 
+        "french": "indiennes d'Am\\u00e9rique du Sud, autres langues", 
         "bibliographic": "sai", 
         "english": "South American Indian (Other)"
     }, 
@@ -2158,7 +2158,7 @@ iso6392 = {
     "pra": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "pr\u00e2krit, langues", 
+        "french": "pr\\u00e2krit, langues", 
         "bibliographic": "pra", 
         "english": "Prakrit languages"
     }, 
@@ -2186,9 +2186,9 @@ iso6392 = {
     "pro": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "proven\u00e7al ancien (jusqu'\u00e0 1500)", 
+        "french": "proven\\u00e7al ancien (jusqu'\\u00e0 1500)", 
         "bibliographic": "pro", 
-        "english": "Proven\u00e7al, Old (to 1500)"
+        "english": "Proven\\u00e7al, Old (to 1500)"
     }, 
     "raj": {
         "terminologic": "", 
@@ -2298,7 +2298,7 @@ iso6392 = {
     "mis": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "langues non cod\u00e9es", 
+        "french": "langues non cod\\u00e9es", 
         "bibliographic": "mis", 
         "english": "Uncoded languages"
     }, 
@@ -2375,7 +2375,7 @@ iso6392 = {
     "kat": {
         "terminologic": "kat", 
         "alpha2": "ka", 
-        "french": "g\u00e9orgien", 
+        "french": "g\\u00e9orgien", 
         "bibliographic": "geo", 
         "english": "Georgian"
     }, 
@@ -2410,7 +2410,7 @@ iso6392 = {
     "ka": {
         "terminologic": "kat", 
         "alpha2": "ka", 
-        "french": "g\u00e9orgien", 
+        "french": "g\\u00e9orgien", 
         "bibliographic": "geo", 
         "english": "Georgian"
     }, 
@@ -2452,7 +2452,7 @@ iso6392 = {
     "ko": {
         "terminologic": "", 
         "alpha2": "ko", 
-        "french": "cor\u00e9en", 
+        "french": "cor\\u00e9en", 
         "bibliographic": "kor", 
         "english": "Korean"
     }, 
@@ -2536,7 +2536,7 @@ iso6392 = {
     "nld": {
         "terminologic": "nld", 
         "alpha2": "nl", 
-        "french": "n\u00e9erlandais; flamand", 
+        "french": "n\\u00e9erlandais; flamand", 
         "bibliographic": "dut", 
         "english": "Dutch; Flemish"
     }, 
@@ -2550,9 +2550,9 @@ iso6392 = {
     "oci": {
         "terminologic": "", 
         "alpha2": "oc", 
-        "french": "occitan (apr\u00e8s 1500); proven\u00e7al", 
+        "french": "occitan (apr\\u00e8s 1500); proven\\u00e7al", 
         "bibliographic": "oci", 
-        "english": "Occitan (post 1500); Proven\u00e7al"
+        "english": "Occitan (post 1500); Proven\\u00e7al"
     }, 
     "bua": {
         "terminologic": "", 
@@ -2683,7 +2683,7 @@ iso6392 = {
     "crp": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "cr\u00e9oles et pidgins", 
+        "french": "cr\\u00e9oles et pidgins", 
         "bibliographic": "crp", 
         "english": "Creoles and pidgins "
     }, 
@@ -2718,7 +2718,7 @@ iso6392 = {
     "nep": {
         "terminologic": "", 
         "alpha2": "ne", 
-        "french": "n\u00e9palais", 
+        "french": "n\\u00e9palais", 
         "bibliographic": "nep", 
         "english": "Nepali"
     }, 
@@ -2767,7 +2767,7 @@ iso6392 = {
     "bai": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "bamil\u00e9k\u00e9, langues", 
+        "french": "bamil\\u00e9k\\u00e9, langues", 
         "bibliographic": "bai", 
         "english": "Bamileke languages"
     }, 
@@ -2802,7 +2802,7 @@ iso6392 = {
     "arc": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "aram\u00e9en d'empire (700-300 BCE)", 
+        "french": "aram\\u00e9en d'empire (700-300 BCE)", 
         "bibliographic": "arc", 
         "english": "Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)"
     }, 
@@ -2816,7 +2816,7 @@ iso6392 = {
     "sem": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "s\u00e9mitiques, langues", 
+        "french": "s\\u00e9mitiques, langues", 
         "bibliographic": "sem", 
         "english": "Semitic languages"
     }, 
@@ -2837,7 +2837,7 @@ iso6392 = {
     "arm": {
         "terminologic": "hye", 
         "alpha2": "hy", 
-        "french": "arm\u00e9nien", 
+        "french": "arm\\u00e9nien", 
         "bibliographic": "arm", 
         "english": "Armenian"
     }, 
@@ -2963,14 +2963,14 @@ iso6392 = {
     "tut": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "alta\u00efques, langues", 
+        "french": "alta\\u00efques, langues", 
         "bibliographic": "tut", 
         "english": "Altaic languages"
     }, 
     "tuk": {
         "terminologic": "", 
         "alpha2": "tk", 
-        "french": "turkm\u00e8ne", 
+        "french": "turkm\\u00e8ne", 
         "bibliographic": "tuk", 
         "english": "Turkmen"
     }, 
@@ -3033,7 +3033,7 @@ iso6392 = {
     "und": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "ind\u00e9termin\u00e9e", 
+        "french": "ind\\u00e9termin\\u00e9e", 
         "bibliographic": "und", 
         "english": "Undetermined"
     }, 
@@ -3061,7 +3061,7 @@ iso6392 = {
     "nno": {
         "terminologic": "", 
         "alpha2": "nn", 
-        "french": "norv\u00e9gien nynorsk; nynorsk, norv\u00e9gien", 
+        "french": "norv\\u00e9gien nynorsk; nynorsk, norv\\u00e9gien", 
         "bibliographic": "nno", 
         "english": "Norwegian Nynorsk; Nynorsk, Norwegian"
     }, 
@@ -3096,7 +3096,7 @@ iso6392 = {
     "ce": {
         "terminologic": "", 
         "alpha2": "ce", 
-        "french": "tch\u00e9tch\u00e8ne", 
+        "french": "tch\\u00e9tch\\u00e8ne", 
         "bibliographic": "che", 
         "english": "Chechen"
     }, 
@@ -3124,7 +3124,7 @@ iso6392 = {
     "cs": {
         "terminologic": "ces", 
         "alpha2": "cs", 
-        "french": "tch\u00e8que", 
+        "french": "tch\\u00e8que", 
         "bibliographic": "cze", 
         "english": "Czech"
     }, 
@@ -3152,7 +3152,7 @@ iso6392 = {
     "cu": {
         "terminologic": "", 
         "alpha2": "cu", 
-        "french": "slavon d'\u00e9glise; vieux slave; slavon liturgique; vieux bulgare", 
+        "french": "slavon d'\\u00e9glise; vieux slave; slavon liturgique; vieux bulgare", 
         "bibliographic": "chu", 
         "english": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic"
     }, 
@@ -3166,21 +3166,21 @@ iso6392 = {
     "fra": {
         "terminologic": "fra", 
         "alpha2": "fr", 
-        "french": "fran\u00e7ais", 
+        "french": "fran\\u00e7ais", 
         "bibliographic": "fre", 
         "english": "French"
     }, 
     "dum": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "n\u00e9erlandais moyen (ca. 1050-1350)", 
+        "french": "n\\u00e9erlandais moyen (ca. 1050-1350)", 
         "bibliographic": "dum", 
         "english": "Dutch, Middle (ca.1050-1350)"
     }, 
     "fre": {
         "terminologic": "fra", 
         "alpha2": "fr", 
-        "french": "fran\u00e7ais", 
+        "french": "fran\\u00e7ais", 
         "bibliographic": "fre", 
         "english": "French"
     }, 
@@ -3201,7 +3201,7 @@ iso6392 = {
     "fro": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "fran\u00e7ais ancien (842-ca.1400)", 
+        "french": "fran\\u00e7ais ancien (842-ca.1400)", 
         "bibliographic": "fro", 
         "english": "French, Old (842-ca.1400)"
     }, 
@@ -3215,16 +3215,16 @@ iso6392 = {
     "frm": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "fran\u00e7ais moyen (1400-1600)", 
+        "french": "fran\\u00e7ais moyen (1400-1600)", 
         "bibliographic": "frm", 
         "english": "French, Middle (ca.1400-1600)"
     }, 
     "nb": {
         "terminologic": "", 
         "alpha2": "nb", 
-        "french": "norv\u00e9gien bokm\u00e5l", 
+        "french": "norv\\u00e9gien bokm\\u00e5l", 
         "bibliographic": "nob", 
-        "english": "Bokm\u00e5l, Norwegian; Norwegian Bokm\u00e5l"
+        "english": "Bokm\\u00e5l, Norwegian; Norwegian Bokm\\u00e5l"
     }, 
     "frs": {
         "terminologic": "", 
@@ -3257,7 +3257,7 @@ iso6392 = {
     "xal": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "kalmouk; o\u00efrat", 
+        "french": "kalmouk; o\\u00efrat", 
         "bibliographic": "xal", 
         "english": "Kalmyk; Oirat"
     }, 
@@ -3278,7 +3278,7 @@ iso6392 = {
     "dut": {
         "terminologic": "nld", 
         "alpha2": "nl", 
-        "french": "n\u00e9erlandais; flamand", 
+        "french": "n\\u00e9erlandais; flamand", 
         "bibliographic": "dut", 
         "english": "Dutch; Flemish"
     }, 
@@ -3355,14 +3355,14 @@ iso6392 = {
     "slv": {
         "terminologic": "", 
         "alpha2": "sl", 
-        "french": "slov\u00e8ne", 
+        "french": "slov\\u00e8ne", 
         "bibliographic": "slv", 
         "english": "Slovenian"
     }, 
     "ain": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "a\u00efnou", 
+        "french": "a\\u00efnou", 
         "bibliographic": "ain", 
         "english": "Ainu"
     }, 
@@ -3390,7 +3390,7 @@ iso6392 = {
     "rar": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "rarotonga; maori des \u00eeles Cook", 
+        "french": "rarotonga; maori des \\u00eeles Cook", 
         "bibliographic": "rar", 
         "english": "Rarotongan; Cook Islands Maori"
     }, 
@@ -3425,9 +3425,9 @@ iso6392 = {
     "vol": {
         "terminologic": "", 
         "alpha2": "vo", 
-        "french": "volap\u00fck", 
+        "french": "volap\\u00fck", 
         "bibliographic": "vol", 
-        "english": "Volap\u00fck"
+        "english": "Volap\\u00fck"
     }, 
     "vi": {
         "terminologic": "", 
@@ -3467,9 +3467,9 @@ iso6392 = {
     "vo": {
         "terminologic": "", 
         "alpha2": "vo", 
-        "french": "volap\u00fck", 
+        "french": "volap\\u00fck", 
         "bibliographic": "vol", 
-        "english": "Volap\u00fck"
+        "english": "Volap\\u00fck"
     }, 
     "ii": {
         "terminologic": "", 
@@ -3502,7 +3502,7 @@ iso6392 = {
     "ine": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "indo-europ\u00e9ennes, langues", 
+        "french": "indo-europ\\u00e9ennes, langues", 
         "bibliographic": "ine", 
         "english": "Indo-European languages"
     }, 
@@ -3523,7 +3523,7 @@ iso6392 = {
     "jpr": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "jud\u00e9o-persan", 
+        "french": "jud\\u00e9o-persan", 
         "bibliographic": "jpr", 
         "english": "Judeo-Persian"
     }, 
@@ -3537,7 +3537,7 @@ iso6392 = {
     "id": {
         "terminologic": "", 
         "alpha2": "id", 
-        "french": "indon\u00e9sien", 
+        "french": "indon\\u00e9sien", 
         "bibliographic": "ind", 
         "english": "Indonesian"
     }, 
@@ -3558,7 +3558,7 @@ iso6392 = {
     "ewo": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "\u00e9wondo", 
+        "french": "\\u00e9wondo", 
         "bibliographic": "ewo", 
         "english": "Ewondo"
     }, 
@@ -3572,7 +3572,7 @@ iso6392 = {
     "ewe": {
         "terminologic": "", 
         "alpha2": "ee", 
-        "french": "\u00e9w\u00e9", 
+        "french": "\\u00e9w\\u00e9", 
         "bibliographic": "ewe", 
         "english": "Ewe"
     }, 
@@ -3635,14 +3635,14 @@ iso6392 = {
     "nog": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "noga\u00ef; nogay", 
+        "french": "noga\\u00ef; nogay", 
         "bibliographic": "nog", 
         "english": "Nogai"
     }, 
     "phn": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "ph\u00e9nicien", 
+        "french": "ph\\u00e9nicien", 
         "bibliographic": "phn", 
         "english": "Phoenician"
     }, 
@@ -3684,21 +3684,21 @@ iso6392 = {
     "niu": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "niu\u00e9", 
+        "french": "niu\\u00e9", 
         "bibliographic": "niu", 
         "english": "Niuean"
     }, 
     "gsw": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "suisse al\u00e9manique; al\u00e9manique; alsacien", 
+        "french": "suisse al\\u00e9manique; al\\u00e9manique; alsacien", 
         "bibliographic": "gsw", 
         "english": "Swiss German; Alemannic; Alsatian"
     }, 
     "epo": {
         "terminologic": "", 
         "alpha2": "eo", 
-        "french": "esp\u00e9ranto", 
+        "french": "esp\\u00e9ranto", 
         "bibliographic": "epo", 
         "english": "Esperanto"
     }, 
@@ -3719,7 +3719,7 @@ iso6392 = {
     "tha": {
         "terminologic": "", 
         "alpha2": "th", 
-        "french": "tha\u00ef", 
+        "french": "tha\\u00ef", 
         "bibliographic": "tha", 
         "english": "Thai"
     }, 
@@ -3754,7 +3754,7 @@ iso6392 = {
     "ell": {
         "terminologic": "ell", 
         "alpha2": "el", 
-        "french": "grec moderne (apr\u00e8s 1453)", 
+        "french": "grec moderne (apr\\u00e8s 1453)", 
         "bibliographic": "gre", 
         "english": "Greek, Modern (1453-)"
     }, 
@@ -3775,14 +3775,14 @@ iso6392 = {
     "ady": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "adygh\u00e9", 
+        "french": "adygh\\u00e9", 
         "bibliographic": "ady", 
         "english": "Adyghe; Adygei"
     }, 
     "elx": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "\u00e9lamite", 
+        "french": "\\u00e9lamite", 
         "bibliographic": "elx", 
         "english": "Elamite"
     }, 
@@ -3803,7 +3803,7 @@ iso6392 = {
     "hat": {
         "terminologic": "", 
         "alpha2": "ht", 
-        "french": "ha\u00eftien; cr\u00e9ole ha\u00eftien", 
+        "french": "ha\\u00eftien; cr\\u00e9ole ha\\u00eftien", 
         "bibliographic": "hat", 
         "english": "Haitian; Haitian Creole"
     }, 
@@ -3817,7 +3817,7 @@ iso6392 = {
     "haw": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "hawa\u00efen", 
+        "french": "hawa\\u00efen", 
         "bibliographic": "haw", 
         "english": "Hawaiian"
     }, 
@@ -3852,7 +3852,7 @@ iso6392 = {
     "mos": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "mor\u00e9", 
+        "french": "mor\\u00e9", 
         "bibliographic": "mos", 
         "english": "Mossi"
     }, 
@@ -3894,7 +3894,7 @@ iso6392 = {
     "tib": {
         "terminologic": "bod", 
         "alpha2": "bo", 
-        "french": "tib\u00e9tain", 
+        "french": "tib\\u00e9tain", 
         "bibliographic": "tib", 
         "english": "Tibetan"
     }, 
@@ -3992,7 +3992,7 @@ iso6392 = {
     "be": {
         "terminologic": "", 
         "alpha2": "be", 
-        "french": "bi\u00e9lorusse", 
+        "french": "bi\\u00e9lorusse", 
         "bibliographic": "bel", 
         "english": "Belarusian"
     }, 
@@ -4041,7 +4041,7 @@ iso6392 = {
     "bo": {
         "terminologic": "bod", 
         "alpha2": "bo", 
-        "french": "tib\u00e9tain", 
+        "french": "tib\\u00e9tain", 
         "bibliographic": "tib", 
         "english": "Tibetan"
     }, 
@@ -4090,7 +4090,7 @@ iso6392 = {
     "rup": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "aroumain; mac\u00e9do-roumain", 
+        "french": "aroumain; mac\\u00e9do-roumain", 
         "bibliographic": "rup", 
         "english": "Aromanian; Arumanian; Macedo-Romanian"
     }, 
@@ -4132,7 +4132,7 @@ iso6392 = {
     "nde": {
         "terminologic": "", 
         "alpha2": "nd", 
-        "french": "nd\u00e9b\u00e9l\u00e9 du Nord", 
+        "french": "nd\\u00e9b\\u00e9l\\u00e9 du Nord", 
         "bibliographic": "nde", 
         "english": "Ndebele, North; North Ndebele"
     }, 
@@ -4153,7 +4153,7 @@ iso6392 = {
     "srr": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "s\u00e9r\u00e8re", 
+        "french": "s\\u00e9r\\u00e8re", 
         "bibliographic": "srr", 
         "english": "Serer"
     }, 
@@ -4181,7 +4181,7 @@ iso6392 = {
     "krl": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "car\u00e9lien", 
+        "french": "car\\u00e9lien", 
         "bibliographic": "krl", 
         "english": "Karelian"
     }, 
@@ -4202,7 +4202,7 @@ iso6392 = {
     "os": {
         "terminologic": "", 
         "alpha2": "os", 
-        "french": "oss\u00e8te", 
+        "french": "oss\\u00e8te", 
         "bibliographic": "oss", 
         "english": "Ossetian; Ossetic"
     }, 
@@ -4244,7 +4244,7 @@ iso6392 = {
     "swe": {
         "terminologic": "", 
         "alpha2": "sv", 
-        "french": "su\u00e9dois", 
+        "french": "su\\u00e9dois", 
         "bibliographic": "swe", 
         "english": "Swedish"
     }, 
@@ -4279,7 +4279,7 @@ iso6392 = {
     "mkd": {
         "terminologic": "mkd", 
         "alpha2": "mk", 
-        "french": "mac\u00e9donien", 
+        "french": "mac\\u00e9donien", 
         "bibliographic": "mac", 
         "english": "Macedonian"
     }, 
@@ -4307,14 +4307,14 @@ iso6392 = {
     "mkh": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "m\u00f4n-khmer, langues", 
+        "french": "m\\u00f4n-khmer, langues", 
         "bibliographic": "mkh", 
         "english": "Mon-Khmer languages"
     }, 
     "heb": {
         "terminologic": "", 
         "alpha2": "he", 
-        "french": "h\u00e9breu", 
+        "french": "h\\u00e9breu", 
         "bibliographic": "heb", 
         "english": "Hebrew"
     }, 
@@ -4356,7 +4356,7 @@ iso6392 = {
     "hy": {
         "terminologic": "hye", 
         "alpha2": "hy", 
-        "french": "arm\u00e9nien", 
+        "french": "arm\\u00e9nien", 
         "bibliographic": "arm", 
         "english": "Armenian"
     }, 
@@ -4377,7 +4377,7 @@ iso6392 = {
     "ht": {
         "terminologic": "", 
         "alpha2": "ht", 
-        "french": "ha\u00eftien; cr\u00e9ole ha\u00eftien", 
+        "french": "ha\\u00eftien; cr\\u00e9ole ha\\u00eftien", 
         "bibliographic": "hat", 
         "english": "Haitian; Haitian Creole"
     }, 
@@ -4433,7 +4433,7 @@ iso6392 = {
     "he": {
         "terminologic": "", 
         "alpha2": "he", 
-        "french": "h\u00e9breu", 
+        "french": "h\\u00e9breu", 
         "bibliographic": "heb", 
         "english": "Hebrew"
     }, 
@@ -4447,7 +4447,7 @@ iso6392 = {
     "aze": {
         "terminologic": "", 
         "alpha2": "az", 
-        "french": "az\u00e9ri", 
+        "french": "az\\u00e9ri", 
         "bibliographic": "aze", 
         "english": "Azerbaijani"
     }, 
@@ -4475,7 +4475,7 @@ iso6392 = {
     "ug": {
         "terminologic": "", 
         "alpha2": "ug", 
-        "french": "ou\u00efgour", 
+        "french": "ou\\u00efgour", 
         "bibliographic": "uig", 
         "english": "Uighur; Uyghur"
     }, 
@@ -4490,7 +4490,7 @@ iso6392 = {
         "terminologic": "", 
         "alpha2": "aa", 
         "french": "afar", 
-        "bibliographic": "\ufeffaar", 
+        "bibliographic": "\\ufeffaar", 
         "english": "Afar"
     }, 
     "ab": {
@@ -4510,7 +4510,7 @@ iso6392 = {
     "uig": {
         "terminologic": "", 
         "alpha2": "ug", 
-        "french": "ou\u00efgour", 
+        "french": "ou\\u00efgour", 
         "bibliographic": "uig", 
         "english": "Uighur; Uyghur"
     }, 
@@ -4545,7 +4545,7 @@ iso6392 = {
     "khi": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "kho\u00efsan, langues", 
+        "french": "kho\\u00efsan, langues", 
         "bibliographic": "khi", 
         "english": "Khoisan languages"
     }, 
@@ -4587,7 +4587,7 @@ iso6392 = {
     "ind": {
         "terminologic": "", 
         "alpha2": "id", 
-        "french": "indon\u00e9sien", 
+        "french": "indon\\u00e9sien", 
         "bibliographic": "ind", 
         "english": "Indonesian"
     }, 
@@ -4601,7 +4601,7 @@ iso6392 = {
     "az": {
         "terminologic": "", 
         "alpha2": "az", 
-        "french": "az\u00e9ri", 
+        "french": "az\\u00e9ri", 
         "bibliographic": "aze", 
         "english": "Azerbaijani"
     }, 
@@ -4622,21 +4622,21 @@ iso6392 = {
     "nl": {
         "terminologic": "nld", 
         "alpha2": "nl", 
-        "french": "n\u00e9erlandais; flamand", 
+        "french": "n\\u00e9erlandais; flamand", 
         "bibliographic": "dut", 
         "english": "Dutch; Flemish"
     }, 
     "nn": {
         "terminologic": "", 
         "alpha2": "nn", 
-        "french": "norv\u00e9gien nynorsk; nynorsk, norv\u00e9gien", 
+        "french": "norv\\u00e9gien nynorsk; nynorsk, norv\\u00e9gien", 
         "bibliographic": "nno", 
         "english": "Norwegian Nynorsk; Nynorsk, Norwegian"
     }, 
     "no": {
         "terminologic": "", 
         "alpha2": "no", 
-        "french": "norv\u00e9gien", 
+        "french": "norv\\u00e9gien", 
         "bibliographic": "nor", 
         "english": "Norwegian"
     }, 
@@ -4657,21 +4657,21 @@ iso6392 = {
     "nai": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "nord-am\u00e9rindiennes, langues", 
+        "french": "nord-am\\u00e9rindiennes, langues", 
         "bibliographic": "nai", 
         "english": "North American Indian languages"
     }, 
     "nd": {
         "terminologic": "", 
         "alpha2": "nd", 
-        "french": "nd\u00e9b\u00e9l\u00e9 du Nord", 
+        "french": "nd\\u00e9b\\u00e9l\\u00e9 du Nord", 
         "bibliographic": "nde", 
         "english": "Ndebele, North; North Ndebele"
     }, 
     "ne": {
         "terminologic": "", 
         "alpha2": "ne", 
-        "french": "n\u00e9palais", 
+        "french": "n\\u00e9palais", 
         "bibliographic": "nep", 
         "english": "Nepali"
     }, 
@@ -4706,7 +4706,7 @@ iso6392 = {
     "gre": {
         "terminologic": "ell", 
         "alpha2": "el", 
-        "french": "grec moderne (apr\u00e8s 1453)", 
+        "french": "grec moderne (apr\\u00e8s 1453)", 
         "bibliographic": "gre", 
         "english": "Greek, Modern (1453-)"
     }, 
@@ -4720,7 +4720,7 @@ iso6392 = {
     "grc": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "grec ancien (jusqu'\u00e0 1453)", 
+        "french": "grec ancien (jusqu'\\u00e0 1453)", 
         "bibliographic": "grc", 
         "english": "Greek, Ancient (to 1453)"
     }, 
@@ -4741,14 +4741,14 @@ iso6392 = {
     "nr": {
         "terminologic": "", 
         "alpha2": "nr", 
-        "french": "nd\u00e9b\u00e9l\u00e9 du Sud", 
+        "french": "nd\\u00e9b\\u00e9l\\u00e9 du Sud", 
         "bibliographic": "nbl", 
         "english": "Ndebele, South; South Ndebele"
     }, 
     "tig": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "tigr\u00e9", 
+        "french": "tigr\\u00e9", 
         "bibliographic": "tig", 
         "english": "Tigre"
     }, 
@@ -4794,24 +4794,24 @@ iso6392 = {
         "bibliographic": "gon", 
         "english": "Gondi"
     }, 
-    "\ufeffaar": {
+    "\\ufeffaar": {
         "terminologic": "", 
         "alpha2": "aa", 
         "french": "afar", 
-        "bibliographic": "\ufeffaar", 
+        "bibliographic": "\\ufeffaar", 
         "english": "Afar"
     }, 
     "cpe": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "cr\u00e9oles et pidgins bas\u00e9s sur l'anglais", 
+        "french": "cr\\u00e9oles et pidgins bas\\u00e9s sur l'anglais", 
         "bibliographic": "cpe", 
         "english": "Creoles and pidgins, English based"
     }, 
     "cpf": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "cr\u00e9oles et pidgins bas\u00e9s sur le fran\u00e7ais", 
+        "french": "cr\\u00e9oles et pidgins bas\\u00e9s sur le fran\\u00e7ais", 
         "bibliographic": "cpf", 
         "english": "Creoles and pidgins, French-based "
     }, 
@@ -4825,7 +4825,7 @@ iso6392 = {
     "cpp": {
         "terminologic": "", 
         "alpha2": "", 
-        "french": "cr\u00e9oles et pidgins bas\u00e9s sur le portugais", 
+        "french": "cr\\u00e9oles et pidgins bas\\u00e9s sur le portugais", 
         "bibliographic": "cpp", 
         "english": "Creoles and pidgins, Portuguese-based "
     }

@@ -12,7 +12,7 @@ import sys
 import time
 import os.path
 
-import timepro
+from . import timepro
 
 
 class MergeStream(object):

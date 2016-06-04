@@ -2,7 +2,7 @@
 mod_tile imagery tiles.  By Braddock Gaskill, March 2013"""
 import struct
 import os
-import thread
+import _thread
 from md5 import md5
 try:
     import progressbar
@@ -128,7 +128,7 @@ def meta_write(tileset, x, y, z, indices, blobs):
             sizes[i] = len(blobs[bid])
 
     # Create a temp file so our save is atomic
-    tmp = "%s.tmp.%d" % (meta_path, thread.get_ident())
+    tmp = "%s.tmp.%d" % (meta_path, _thread.get_ident())
     f = open(tmp, "w")
 
     # Header
@@ -270,18 +270,18 @@ def convert(src, dst, z):
     assert(dst.METATILE % src.METATILE == 0)
     size = 2 ** z
     progress = progress_bar("Level " + str(z) + " Tiles ", size)
-    for y in xrange(0, size, dst.METATILE):
+    for y in range(0, size, dst.METATILE):
         progress.update(y)
-        for x in xrange(0, size, dst.METATILE):
+        for x in range(0, size, dst.METATILE):
             tiles = []
-            for src_y in xrange(y, y + dst.METATILE, src.METATILE):
-                for src_x in xrange(x, x + dst.METATILE, src.METATILE):
+            for src_y in range(y, y + dst.METATILE, src.METATILE):
+                for src_x in range(x, x + dst.METATILE, src.METATILE):
                     try:
                         tiles.extend(meta_load_all(src, src_x, src_y, z))
                     except TileNotFoundException:
                         pass
                     except TileInvalidFormat as e:
-                        print "ERROR reading tile: " + e.message
+                        print("ERROR reading tile: " + e.message)
             if len(tiles) > 0:
                 meta_save(dst, x, y, z, tiles)
     progress.update(size)

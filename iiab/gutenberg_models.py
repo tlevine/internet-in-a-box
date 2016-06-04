@@ -2,29 +2,29 @@
 
 from .extensions import db
 
-gutenberg_books_category_map = db.Table(u'gutenberg_books_category_map', 
-    db.Column(u'book_id', db.INTEGER(), db.ForeignKey('gutenberg_books.textId'), primary_key=True),
-    db.Column(u'category_id', db.INTEGER(), db.ForeignKey('gutenberg_categories.id'), primary_key=True),
+gutenberg_books_category_map = db.Table('gutenberg_books_category_map', 
+    db.Column('book_id', db.INTEGER(), db.ForeignKey('gutenberg_books.textId'), primary_key=True),
+    db.Column('category_id', db.INTEGER(), db.ForeignKey('gutenberg_categories.id'), primary_key=True),
 )
 
-gutenberg_books_contributor_map = db.Table(u'gutenberg_books_contributor_map', 
-    db.Column(u'book_id', db.INTEGER(), db.ForeignKey('gutenberg_books.textId'), primary_key=True),
-    db.Column(u'contributor_id', db.INTEGER(), db.ForeignKey('gutenberg_contributors.id'), primary_key=True),
+gutenberg_books_contributor_map = db.Table('gutenberg_books_contributor_map', 
+    db.Column('book_id', db.INTEGER(), db.ForeignKey('gutenberg_books.textId'), primary_key=True),
+    db.Column('contributor_id', db.INTEGER(), db.ForeignKey('gutenberg_contributors.id'), primary_key=True),
 )
 
-gutenberg_books_creator_map = db.Table(u'gutenberg_books_creator_map', 
-    db.Column(u'book_id', db.INTEGER(), db.ForeignKey('gutenberg_books.textId'), primary_key=True),
-    db.Column(u'creator_id', db.INTEGER(), db.ForeignKey('gutenberg_creators.id'), primary_key=True),
+gutenberg_books_creator_map = db.Table('gutenberg_books_creator_map', 
+    db.Column('book_id', db.INTEGER(), db.ForeignKey('gutenberg_books.textId'), primary_key=True),
+    db.Column('creator_id', db.INTEGER(), db.ForeignKey('gutenberg_creators.id'), primary_key=True),
 )
 
-gutenberg_books_language_map = db.Table(u'gutenberg_books_language_map', 
-    db.Column(u'book_id', db.INTEGER(), db.ForeignKey('gutenberg_books.textId'), primary_key=True),
-    db.Column(u'language_id', db.INTEGER(), db.ForeignKey('gutenberg_languages.id'), primary_key=True),
+gutenberg_books_language_map = db.Table('gutenberg_books_language_map', 
+    db.Column('book_id', db.INTEGER(), db.ForeignKey('gutenberg_books.textId'), primary_key=True),
+    db.Column('language_id', db.INTEGER(), db.ForeignKey('gutenberg_languages.id'), primary_key=True),
 )
 
-gutenberg_books_subject_map = db.Table(u'gutenberg_books_subject_map', 
-    db.Column(u'book_id', db.INTEGER(), db.ForeignKey('gutenberg_books.textId'), primary_key=True),
-    db.Column(u'subject_id', db.INTEGER(), db.ForeignKey('gutenberg_subjects.id'), primary_key=True),
+gutenberg_books_subject_map = db.Table('gutenberg_books_subject_map', 
+    db.Column('book_id', db.INTEGER(), db.ForeignKey('gutenberg_books.textId'), primary_key=True),
+    db.Column('subject_id', db.INTEGER(), db.ForeignKey('gutenberg_subjects.id'), primary_key=True),
 )
 
 class GutenbergBook(db.Model):
@@ -33,11 +33,11 @@ class GutenbergBook(db.Model):
     __table_args__ = {}
 
     #column definitions
-    downloads = db.Column(u'downloads', db.INTEGER())
-    friendlytitle = db.Column(u'friendlytitle', db.TEXT())
-    textId = db.Column(u'textId', db.TEXT(), primary_key=True, nullable=False)
-    title = db.Column(u'title', db.TEXT())
-    title_order = db.Column(u'title_order', db.INTEGER())
+    downloads = db.Column('downloads', db.INTEGER())
+    friendlytitle = db.Column('friendlytitle', db.TEXT())
+    textId = db.Column('textId', db.TEXT(), primary_key=True, nullable=False)
+    title = db.Column('title', db.TEXT())
+    title_order = db.Column('title_order', db.INTEGER())
 
     #relation definitions
     gutenberg_categories = db.relation('GutenbergCategory', primaryjoin='GutenbergBook.textId==gutenberg_books_category_map.c.book_id', secondary=gutenberg_books_category_map, secondaryjoin='gutenberg_books_category_map.c.category_id==GutenbergCategory.id')
@@ -54,8 +54,8 @@ class GutenbergCategory(db.Model):
     __table_args__ = {}
 
     #column definitions
-    category = db.Column(u'category', db.TEXT())
-    id = db.Column(u'id', db.INTEGER(), primary_key=True, nullable=False)
+    category = db.Column('category', db.TEXT())
+    id = db.Column('id', db.INTEGER(), primary_key=True, nullable=False)
 
     #relation definitions
     gutenberg_books = db.relation('GutenbergBook', primaryjoin='GutenbergCategory.id==gutenberg_books_category_map.c.category_id', secondary=gutenberg_books_category_map, secondaryjoin='gutenberg_books_category_map.c.book_id==GutenbergBook.textId')
@@ -67,9 +67,9 @@ class GutenbergContributor(db.Model):
     __table_args__ = {}
 
     #column definitions
-    contributor = db.Column(u'contributor', db.TEXT())
-    downloads = db.Column(u'downloads', db.INTEGER())
-    id = db.Column(u'id', db.INTEGER(), primary_key=True, nullable=False)
+    contributor = db.Column('contributor', db.TEXT())
+    downloads = db.Column('downloads', db.INTEGER())
+    id = db.Column('id', db.INTEGER(), primary_key=True, nullable=False)
 
     #relation definitions
     gutenberg_books = db.relation('GutenbergBook', primaryjoin='GutenbergContributor.id==gutenberg_books_contributor_map.c.contributor_id', secondary=gutenberg_books_contributor_map, secondaryjoin='gutenberg_books_contributor_map.c.book_id==GutenbergBook.textId')
@@ -81,9 +81,9 @@ class GutenbergCreator(db.Model):
     __table_args__ = {}
 
     #column definitions
-    creator = db.Column(u'creator', db.TEXT())
-    downloads = db.Column(u'downloads', db.INTEGER())
-    id = db.Column(u'id', db.INTEGER(), primary_key=True, nullable=False)
+    creator = db.Column('creator', db.TEXT())
+    downloads = db.Column('downloads', db.INTEGER())
+    id = db.Column('id', db.INTEGER(), primary_key=True, nullable=False)
 
     #relation definitions
     gutenberg_books = db.relation('GutenbergBook', primaryjoin='GutenbergCreator.id==gutenberg_books_creator_map.c.creator_id', secondary=gutenberg_books_creator_map, secondaryjoin='gutenberg_books_creator_map.c.book_id==GutenbergBook.textId')
@@ -95,10 +95,10 @@ class GutenbergFile(db.Model):
     __table_args__ = {}
 
     #column definitions
-    file = db.Column(u'file', db.TEXT())
-    format = db.Column(u'format', db.TEXT())
-    id = db.Column(u'id', db.INTEGER(), primary_key=True, nullable=False)
-    textId = db.Column(u'textId', db.TEXT(), db.ForeignKey('gutenberg_books.textId'))
+    file = db.Column('file', db.TEXT())
+    format = db.Column('format', db.TEXT())
+    id = db.Column('id', db.INTEGER(), primary_key=True, nullable=False)
+    textId = db.Column('textId', db.TEXT(), db.ForeignKey('gutenberg_books.textId'))
 
     #relation definitions
     gutenberg_books = db.relation('GutenbergBook', primaryjoin='GutenbergFile.textId==GutenbergBook.textId')
@@ -110,8 +110,8 @@ class GutenbergLanguage(db.Model):
     __table_args__ = {}
 
     #column definitions
-    id = db.Column(u'id', db.INTEGER(), primary_key=True, nullable=False)
-    language = db.Column(u'language', db.TEXT())
+    id = db.Column('id', db.INTEGER(), primary_key=True, nullable=False)
+    language = db.Column('language', db.TEXT())
 
     #relation definitions
     gutenberg_books = db.relation('GutenbergBook', primaryjoin='GutenbergLanguage.id==gutenberg_books_language_map.c.language_id', secondary=gutenberg_books_language_map, secondaryjoin='gutenberg_books_language_map.c.book_id==GutenbergBook.textId')
@@ -123,8 +123,8 @@ class GutenbergSubject(db.Model):
     __table_args__ = {}
 
     #column definitions
-    id = db.Column(u'id', db.INTEGER(), primary_key=True, nullable=False)
-    subject = db.Column(u'subject', db.TEXT())
+    id = db.Column('id', db.INTEGER(), primary_key=True, nullable=False)
+    subject = db.Column('subject', db.TEXT())
 
     #relation definitions
     gutenberg_books = db.relation('GutenbergBook', primaryjoin='GutenbergSubject.id==gutenberg_books_subject_map.c.subject_id', secondary=gutenberg_books_subject_map, secondaryjoin='gutenberg_books_subject_map.c.book_id==GutenbergBook.textId')

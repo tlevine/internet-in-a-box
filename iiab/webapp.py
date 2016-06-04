@@ -2,19 +2,19 @@ from flask import Flask, url_for
 from flask.ext.babel import Babel
 from flask.ext.autoindex import AutoIndex
 import sys
-import urlparse
+import urllib.parse
 
-from config import config
-import top_views
-import search_views
-import map_views
-import video_views
-import gutenberg
-import gutenberg_content_views
-import wikipedia_views
-import zim_views
-import settings_views
-from babel_patch import babel_patched_load
+from .config import config
+from . import top_views
+from . import search_views
+from . import map_views
+from . import video_views
+from . import gutenberg
+from . import gutenberg_content_views
+from . import wikipedia_views
+from . import zim_views
+from . import settings_views
+from .babel_patch import babel_patched_load
 
 
 def create_app(debug=True, enable_profiler=False, profiler_quiet=False, enable_timepro=False):
@@ -74,7 +74,7 @@ def create_app(debug=True, enable_profiler=False, profiler_quiet=False, enable_t
         root = app.config.get('STATIC_ROOT', None)
         if root is None:  # fallback on the normal way
             return url_for('static', filename=path)
-        return urlparse.urljoin(root, path)
+        return urllib.parse.urljoin(root, path)
 
     @app.context_processor
     def inject_static():
@@ -91,7 +91,7 @@ def create_app(debug=True, enable_profiler=False, profiler_quiet=False, enable_t
         return profile_app
 
     if enable_timepro:
-        from timepro_flask import TimeProMiddleware, MergeStream
+        from .timepro_flask import TimeProMiddleware, MergeStream
         f = open('timepro.log', 'w')
         if profiler_quiet:
             profile_app = TimeProMiddleware(app, f, profile_dir="/tmp")

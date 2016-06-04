@@ -102,7 +102,7 @@ class TimePro(object):
                   % (r['count'], r['total'], r['total'] / float(r['count']), r['max'], r['min'], int(dmem), indent, r['name']))
 
     def log_children(self, r, level=0):
-        children = r['children'].values()
+        children = list(r['children'].values())
         children.sort(key=lambda x: -x['total'])
         for child in children:
             self.log_record(child, level + 1)
@@ -154,9 +154,9 @@ def profile():
     def wrapper1(fn):
         @wraps(fn)
         def wrapper2(*args, **kwargs):
-            timepro().start(fn.func_name)
+            timepro().start(fn.__name__)
             r = fn(*args, **kwargs)
-            timepro().end(fn.func_name)
+            timepro().end(fn.__name__)
             return r
         return wrapper2
     return wrapper1
@@ -168,9 +168,9 @@ def profile_and_print():
     def wrapper1(fn):
         @wraps(fn)
         def wrapper2(*args, **kwargs):
-            timepro().start(fn.func_name)
+            timepro().start(fn.__name__)
             r = fn(*args, **kwargs)
-            timepro().end(fn.func_name)
+            timepro().end(fn.__name__)
             timepro().log_all()
             return r
         return wrapper2

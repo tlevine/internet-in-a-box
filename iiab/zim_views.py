@@ -6,11 +6,11 @@ from flask import Blueprint, Response, render_template, request, flash, url_for,
 from flask.ext.babel import gettext as _
 from whoosh import scoring, sorting
 
-from zimpy import ZimFile
-from config import config
+from .zimpy import ZimFile
+from .config import config
 
-from whoosh_search import paginated_search
-from utils import whoosh_open_dir_32_or_64
+from .whoosh_search import paginated_search
+from .utils import whoosh_open_dir_32_or_64
 
 from .endpoint_description import EndPointDescription
 
@@ -25,9 +25,9 @@ def load_zim_file(humanReadableId):
     return ZimFile(zim_fn)
 
 def replace_paths(top_url, html):
-    replace = u"\\1\\2" + top_url + "/\\3/"
-    html = re.sub(u'(href|src)(=["\']/)([A-Z\-])/', replace, html)
-    html = re.sub(u'(@import[ ]+)(["\']/)([A-Z\-])/', replace, html)
+    replace = "\\1\\2" + top_url + "/\\3/"
+    html = re.sub('(href|src)(=["\']/)([A-Z\-])/', replace, html)
+    html = re.sub('(@import[ ]+)(["\']/)([A-Z\-])/', replace, html)
     return html
 
 def mangle_article(html, mimetype, humanReadableId):
@@ -36,10 +36,10 @@ def mangle_article(html, mimetype, humanReadableId):
             html = html.decode('utf-8','replace')
         except UnicodeDecodeError:
             try:
-                print "utf-8 decoding failed, falling back to latin1"
+                print("utf-8 decoding failed, falling back to latin1")
                 html = html.decode('latin1')
             except:
-                print "utf-8 and latin1 decoding failed"
+                print("utf-8 and latin1 decoding failed")
                 return html
         html = replace_paths("iiab/zim/" + humanReadableId, html)
     return html

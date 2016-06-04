@@ -2,7 +2,7 @@
 # such as htmlz and epub datasets
 import os
 
-from config import config
+from .config import config
 
 
 def hashdir(n):

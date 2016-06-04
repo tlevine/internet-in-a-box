@@ -1,10 +1,10 @@
 # Internet-in-a-Box System
 # By Braddock Gaskill, 16 Feb 2013
-from utils import whoosh_open_dir_32_or_64
+from .utils import whoosh_open_dir_32_or_64
 from whoosh.qparser import QueryParser
 from whoosh import sorting
 
-from utils import whoosh2dict
+from .utils import whoosh2dict
 
 
 class MapSearch(object):
@@ -19,7 +19,7 @@ class MapSearch(object):
         page specifies the page of results to return (first page is 1)
         Set pagelen = None or 0 to retrieve all results.
         """
-        query = unicode(query)  # Must be unicode
+        query = str(query)  # Must be unicode
         population_sort_facet = sorting.FieldFacet("population", reverse=True)
         ix = whoosh_open_dir_32_or_64(self.index_dir)
         with ix.searcher() as searcher:
@@ -28,7 +28,7 @@ class MapSearch(object):
                 try:
                     results = searcher.search_page(query, page, pagelen=pagelen,
                                                 sortedby=population_sort_facet)
-                except ValueError, e:  # Invalid page number
+                except ValueError as e:  # Invalid page number
                     results = []
             else:
                 results = searcher.search(query, limit=None, sortedby=population_sort_facet)
@@ -42,7 +42,7 @@ class MapSearch(object):
 
     def count(self, query):
         """Return total number of matching documents in index"""
-        query = unicode(query)  # Must be unicode
+        query = str(query)  # Must be unicode
         ix = whoosh_open_dir_32_or_64(self.index_dir)
         with ix.searcher() as searcher:
             query = QueryParser("title", ix.schema).parse(query)

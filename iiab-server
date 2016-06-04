@@ -40,7 +40,7 @@ def main(argv):
     (options, args) = parser.parse_args()
 
     if options.version:
-        print "Internet-in-a-Box Version " + iiab.__version__
+        print("Internet-in-a-Box Version " + iiab.__version__)
         return 0
     # Set up logging
     FORMAT = "%(name)s -- %(message)s"
@@ -74,7 +74,7 @@ def main(argv):
     try:
         iiab.video_views.get_tree()
     except:
-        print "ERROR loading Khan Videos: " + str(sys.exc_info())
+        print("ERROR loading Khan Videos: " + str(sys.exc_info()))
 
     host = config().get('WEBAPP', 'interface')
     port = config().getint('WEBAPP', 'port')

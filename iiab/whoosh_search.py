@@ -4,7 +4,7 @@ from whoosh.qparser import MultifieldParser
 from whoosh import scoring
 
 from .whoosh_multi_field_spelling_correction import MultiFieldQueryCorrector
-import pagination_helper
+from . import pagination_helper
 
 def index_directory_path(base_path, zim_name):
     """Returns the directory where a ZIM file's index should be located, given
@@ -26,7 +26,7 @@ def get_query_corrections(searcher, query, qstring):
     :param qstring: search string that was passed to the query object
     :returns: MultiFieldQueryCorrector with one corrector for each corrected column
     """
-    fieldnames = [name for name, field in searcher.schema.items() if field.spelling]
+    fieldnames = [name for name, field in list(searcher.schema.items()) if field.spelling]
     correctors = {}
     for fieldname in fieldnames:
         if fieldname not in correctors:
@@ -47,7 +47,7 @@ def deduplicate_corrections(corrections):
     # Using values from a dictionary comprehension rather than a list comprehension in order to deduplicate
     #return {c.string : c for c in corrections if c.original_query != c.query}.values()
     # We can't use dictionary comprehension because we are stuck on python 2.6 for Debian stable
-    return dict((c.string, c) for c in corrections if c.original_query != c.query).values()
+    return list(dict((c.string, c) for c in corrections if c.original_query != c.query).values())
 
 
 def paginated_search(ix, search_columns, query_text, page=1, pagelen=20, sort_column=None, weighting=scoring.BM25F):
@@ -56,7 +56,7 @@ def paginated_search(ix, search_columns, query_text, page=1, pagelen=20, sort_co
     pagelen specifies number of hits per page
     page specifies page of results (first page is 1)
     """
-    query_text = unicode(query_text)  # Must be unicode
+    query_text = str(query_text)  # Must be unicode
 
     with ix.searcher(weighting=weighting) as searcher:
         query = MultifieldParser(search_columns, ix.schema).parse(query_text)
@@ -67,7 +67,7 @@ def paginated_search(ix, search_columns, query_text, page=1, pagelen=20, sort_co
         except ValueError:  # Invalid page number
             results = []
             total = 0
-        paginate = pagination_helper.Pagination(page, pagelen, total, [dict(r.items()) for r in results])
+        paginate = pagination_helper.Pagination(page, pagelen, total, [dict(list(r.items())) for r in results])
         corrections = deduplicate_corrections(get_query_corrections(searcher, query, query_text))  # list of Corrector objects
 
         #hf = whoosh.highlight.HtmlFormatter(classname="change")

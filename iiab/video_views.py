@@ -5,8 +5,8 @@ import json
 import os
 import string
 
-from config import config
-import khan
+from .config import config
+from . import khan
 
 blueprint = Blueprint('video_views', __name__,
                       template_folder='templates', static_folder='khanvideo')
@@ -62,7 +62,7 @@ def khan_view(khanpath=''):
                 'name': child[1],
                 'url': "/iiab/video/khan/" + join_khanpath(path + [child[0]])
             }
-        children = map(childmap, r['children'])
+        children = list(map(childmap, r['children']))
         return render_template('khan_index.html', breadcrumbs=r['breadcrumbs'], children=children)
     elif 'file' in r:
         base_url = config().get('VIDEO', 'video_url')
@@ -77,7 +77,7 @@ def khan_view(khanpath=''):
 
 @blueprint.route('/khanvideo/<path:khanpath>.webm')
 def khan_webm_view(khanpath=''):
-    print "webm_view", khanpath
+    print("webm_view", khanpath)
     path = split_khanpath(khanpath)
     tree = get_tree()
     filename = khan.getfile(tree, path)

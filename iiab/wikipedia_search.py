@@ -2,7 +2,7 @@
 # By Braddock Gaskill, 16 Feb 2013
 from whoosh.qparser import QueryParser
 
-from utils import whoosh2dict, whoosh_open_dir_32_or_64
+from .utils import whoosh2dict, whoosh_open_dir_32_or_64
 
 
 class WikipediaSearch(object):
@@ -17,7 +17,7 @@ class WikipediaSearch(object):
         page specifies the page of results to return (first page is 1)
         Set pagelen = None or 0 to retrieve all results.
         """
-        query = unicode(query)  # Must be unicode
+        query = str(query)  # Must be unicode
         ix = whoosh_open_dir_32_or_64(self.index_dir)
         with ix.searcher() as searcher:
             query = QueryParser("title", ix.schema).parse(query)
@@ -25,7 +25,7 @@ class WikipediaSearch(object):
                 try:
                     results = searcher.search_page(query, page, pagelen=pagelen,
                                                    sortedby="score", reverse=True)
-                except ValueError, e:  # Invalid page number
+                except ValueError as e:  # Invalid page number
                     results = []
             else:
                 results = searcher.search(query, limit=None,
@@ -37,7 +37,7 @@ class WikipediaSearch(object):
 
     def count(self, query):
         """Return total number of matching documents in index"""
-        query = unicode(query)  # Must be unicode
+        query = str(query)  # Must be unicode
         ix = whoosh_open_dir_32_or_64(self.index_dir)
         with ix.searcher() as searcher:
             query = QueryParser("title", ix.schema).parse(query)

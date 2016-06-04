@@ -107,7 +107,7 @@ def find(root, extension=".webm"):
     found = []
     cwd = os.getcwd()
     os.chdir(root)
-    for path, dirs, files in os.walk('.'):
+    for path, dirs, files in os.walk('.'.encode('utf-8')):
         path = path[2:]  # Remove './'
         for f in files:
             if extension is None or f[-len(extension):] == extension:

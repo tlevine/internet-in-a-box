@@ -3,7 +3,7 @@ mod_tile imagery tiles.  By Braddock Gaskill, March 2013"""
 import struct
 import os
 import _thread
-from md5 import md5
+from hashlib import md5
 try:
     import progressbar
 except ImportError:

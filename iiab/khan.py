@@ -111,7 +111,7 @@ def find(root, extension=".webm"):
         path = path[2:]  # Remove './'
         for f in files:
             if extension is None or f[-len(extension):] == extension:
-                found.append(os.path.join(str(path.decode('utf-8')), str(f.decode('utf-8'))))
+                found.append(os.path.join(path.decode('utf-8'), f.decode('utf-8')))
     os.chdir(cwd)
     return found
 

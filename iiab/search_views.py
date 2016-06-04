@@ -2,9 +2,9 @@
 from flask import Blueprint, Response, request, redirect, make_response
 import json
 
-from wikipedia_search import WikipediaSearch
-from map_search import MapSearch
-from config import config
+from .wikipedia_search import WikipediaSearch
+from .map_search import MapSearch
+from .config import config
 
 blueprint = Blueprint('search_views', __name__,
                       template_folder='templates', static_folder='static')

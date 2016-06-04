@@ -9,8 +9,8 @@ except ImportError:
 
 from .config import config
 from . import top_views
-import search_views
-import map_views
+from . import search_views
+from . import map_views
 import video_views
 import gutenberg
 import gutenberg_content_views

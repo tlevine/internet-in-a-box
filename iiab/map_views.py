@@ -2,7 +2,7 @@
 from flask import Blueprint, Response
 import os
 
-from osmtile import TileSet, meta_load_one
+from .osmtile import TileSet, meta_load_one
 from config import config
 
 blueprint = Blueprint('map_views', __name__,

@@ -4,7 +4,7 @@ from flask import (Blueprint, make_response, render_template,
 from flask.ext.babel import gettext as _
 
 from .config import config
-from utils import mdns_resolve
+from .utils import mdns_resolve
 
 blueprint = Blueprint('top_views', __name__,
                       template_folder='templates', static_folder='static')

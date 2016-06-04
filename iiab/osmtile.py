@@ -260,7 +260,7 @@ def convert(src, dst, z):
     """Convert a source mod_tile tree of one METATILE setting
     to a new tree of a larger (multiple) METATILE setting.
     Example usage:
-        import osmtile
+        from . import osmtile
         src=osmtile.TileSet('/knowledge/processed/mod_tile', 'default', METATILE=8, flatter=False)
         dst=osmtile.TileSet('/knowledge/modules/openstreetmap/mod_tile64', 'default', METATILE=64, flatter=True)
         for z in range(0, 16):
@@ -281,7 +281,7 @@ def convert(src, dst, z):
                     except TileNotFoundException:
                         pass
                     except TileInvalidFormat as e:
-                        print "ERROR reading tile: " + e.message
+                        print("ERROR reading tile: " + e.message)
             if len(tiles) > 0:
                 meta_save(dst, x, y, z, tiles)
     progress.update(size)

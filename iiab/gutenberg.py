@@ -19,7 +19,7 @@ from config import config
 
 from whoosh_search import paginated_search
 from whoosh.index import open_dir
-from utils import whoosh_open_dir_32_or_64
+from .utils import whoosh_open_dir_32_or_64
 
 from .endpoint_description import EndPointDescription
 

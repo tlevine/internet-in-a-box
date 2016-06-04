@@ -2,7 +2,7 @@
 # By Braddock Gaskill, 16 Feb 2013
 from whoosh.qparser import QueryParser
 
-from utils import whoosh2dict, whoosh_open_dir_32_or_64
+from .utils import whoosh2dict, whoosh_open_dir_32_or_64
 
 
 class WikipediaSearch(object):
@@ -25,7 +25,7 @@ class WikipediaSearch(object):
                 try:
                     results = searcher.search_page(query, page, pagelen=pagelen,
                                                    sortedby="score", reverse=True)
-                except ValueError, e:  # Invalid page number
+                except ValueError as e:  # Invalid page number
                     results = []
             else:
                 results = searcher.search(query, limit=None,

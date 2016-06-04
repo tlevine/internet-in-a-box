@@ -15,7 +15,7 @@ def crawl_files(db, cb):
 def check_exists(root, fname):
     fullpath = os.path.join(root, fname)
     if not os.path.exists(fullpath):
-        print fname
+        print(fname)
 
 def main():
     parser = ArgumentParser(description="Crawl an existing Gutenberg index database and verify existence of each file in the index. Print non-existing file paths to STDOUT.")

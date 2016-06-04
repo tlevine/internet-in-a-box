@@ -79,7 +79,7 @@ def search():
 @gutenberg.route('/mirror/<path:filename>')
 def gutenberg_mirror(filename):
     mirror_dir = config().get_path('GUTENBERG', 'gutenberg_mirror')
-    print("mirror", mirror_dir, filename)
+    print(("mirror", mirror_dir, filename))
     r = send_from_directory(mirror_dir, filename)
     return make_response(r, 200, {'Accept-Ranges': 'bytes'})
 
@@ -165,7 +165,7 @@ def text(textId):
     # if blueprint has a different static_folder specified we might need to use blueprint.static_folder but currently None
     for x in record.gutenberg_files:
         if not mirror_exists(x):
-            print("WARNING: Gutenberg file " + mirror_path(x.file) + " not found")
+            print(("WARNING: Gutenberg file " + mirror_path(x.file) + " not found"))
     record.gutenberg_files = list(filter(mirror_exists, record.gutenberg_files))
 
     pgid = textId2number(textId)

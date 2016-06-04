@@ -21,13 +21,13 @@ options = None
 
 
 def call2(cmd):
-    print "CALL: " + string.join(cmd, ' ')
+    print("CALL: " + string.join(cmd, ' '))
     call(cmd)
 
 
 def assert_exists(filename):
     if not os.path.exists(filename):
-        print 'ERROR: ' + filename + ' does not exist'
+        print('ERROR: ' + filename + ' does not exist')
         exit(-1)
 
 
@@ -43,7 +43,7 @@ def find_latest_dump(dump_dir, lang):
     target = lang + "wiki-" + str(dates[-1]) + "-pages-articles.xml.bz2"
     path = os.path.join(lang_dir, str(dates[-1]), target)
     assert_exists(path)
-    print "Latest " + lang + " dump is " + path
+    print("Latest " + lang + " dump is " + path)
     return path, dates[-1]
 
 
@@ -55,7 +55,7 @@ def write_version(path, version):
 
 def process(language):
     global options
-    print "Processing " + language
+    print("Processing " + language)
     # Define paths
     dump_path = os.path.join(options.knowledge, "data", "wikipedia", "dumps")
     if not options.xml:
@@ -103,13 +103,13 @@ def process(language):
         if options.force:
             call2(['rm', '-r', untardir])
         else:
-            print "ERROR: " + untardir + " already exists, refusing to proceed"
+            print("ERROR: " + untardir + " already exists, refusing to proceed")
             sys.exit(-2)
     if os.path.exists(wikidir):
         if options.force:
             call2(['rm', '-r', wikidir])
         else:
-            print "ERROR: " + wikidir + " already exists, refusing to proceed"
+            print("ERROR: " + wikidir + " already exists, refusing to proceed")
             sys.exit(-2)
     call2(['tar', '-C', options.destination, '-xzf', options.mediawiki])
     os.rename(os.path.join(options.destination, 'mediawiki-1.20.2'), wikidir)
@@ -195,10 +195,10 @@ def process(language):
                "org.mediawiki.dumper.Dumper '" + xml + "' --format=sql:1.5",
                "| mysql -u " + options.user + " --password=" + options.password + " " + dbname]
     cmd = string.join(cmd, ' ')
-    print cmd
+    print(cmd)
     t0 = time()
     call(cmd, shell=True)
-    print language + " mwimport time = " + str(time() - t0) + " seconds"
+    print(language + " mwimport time = " + str(time() - t0) + " seconds")
 
 
 parser = OptionParser()
@@ -252,7 +252,7 @@ for language in languages:
     dbname = language + 'wiki'
     wikidir = os.path.join(options.destination, dbname)
     if os.path.exists(wikidir):
-        print "ERROR: " + wikidir + " already exists.  Delete it to continue"
+        print("ERROR: " + wikidir + " already exists.  Delete it to continue")
         exit(-3)
 
 for language in languages:

@@ -19,7 +19,7 @@ def test_query(indexdir, terms):
     with whoosh_index.searcher() as searcher:
         query = QueryParser(SEARCH_FIELD, whoosh_index.schema).parse(terms)
         results = searcher.search(query)
-        return [r.items() for r in results]
+        return [list(r.items()) for r in results]
         #return [dict(r.items()) for r in results]
 
 
@@ -47,7 +47,7 @@ def create_gutenberg_index_rdf(bz2_rdf_filename, indexdir):
     DEPRECATED"""
     sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)   # don't buffer stdout
 
-    print "WARNING: direct use of rdf content may not accurately reflect database contents"
+    print("WARNING: direct use of rdf content may not accurately reflect database contents")
 
     schema = get_schema()
     whoosh_index = create_in(indexdir, schema)
@@ -56,12 +56,12 @@ def create_gutenberg_index_rdf(bz2_rdf_filename, indexdir):
         # Only index fields from description records. File records can be ignored.
         if record['record_type'] == 'DESCRIPTION':
             if count % 5000 == 0:
-                print count,
+                print(count, end=' ')
             subset = {k : record[k] for k in schema.names() if k in record}
             writer.add_document(**subset)
-    print "committing...",
+    print("committing...", end=' ')
     writer.commit()
-    print "DONE"
+    print("DONE")
 
 def create_gutenberg_index_db(dbname, indexdir):
     def sel_aux(aux_table, aux_col):
@@ -73,10 +73,10 @@ def create_gutenberg_index_db(dbname, indexdir):
         # get diction of id->value mappings
         resultset = dict(aux_cursor.execute(sel_aux(table, col), filt).fetchall())
         # index a flattened record because whoosh does not allow named column indexing of lists unless indexed as keywords
-        record[col] = u'; '.join(resultset.values())
+        record[col] = '; '.join(list(resultset.values()))
         # store records for later reference
         store_key = '_stored_' + col
-        record[store_key] = resultset.items()
+        record[store_key] = list(resultset.items())
         
     sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)   # don't buffer stdout
     schema = get_schema()
@@ -90,7 +90,7 @@ def create_gutenberg_index_db(dbname, indexdir):
     SCHEMA_NAMES = schema.names()
     BOOK_FIELD_NAMES = ['textId', 'title', 'friendlytitle']
     for count, row in enumerate(book_cursor.execute('SELECT {fields} from gutenberg_books;'.format(fields=','.join(BOOK_FIELD_NAMES)))):
-        record = dict(zip(BOOK_FIELD_NAMES, row))
+        record = dict(list(zip(BOOK_FIELD_NAMES, row)))
         textId_dict = { 'textId' : record['textId'] } # separate dict because extra, unused keys causes error during binding
         # Multiple select statements instead of one because want a single record per book.
         add_aux_fields(aux_cursor, record, 'gutenberg_creators', 'creator')
@@ -101,13 +101,13 @@ def create_gutenberg_index_db(dbname, indexdir):
 
         # Only index fields from description records. File records can be ignored.
         if count % 10000 == 0:
-            print count,
+            print(count, end=' ')
         subset = {k : record[k] for k in record if k in SCHEMA_NAMES or k.startswith('_stored_')}
         writer.add_document(**subset)
 
-    print "committing...",
+    print("committing...", end=' ')
     writer.commit()
-    print "DONE"
+    print("DONE")
 
 if __name__ == '__main__':
     parser = ArgumentParser(description="Create whoosh search index from the Gutenberg index. Source index can be either the RDF or database index. Using the database index is recommended since the RDF and database contents may differ.")
@@ -126,9 +126,9 @@ if __name__ == '__main__':
     else:
         create_gutenberg_index_db(args.dbname, args.indexdir)
 
-    print "Test search of whoosh index for 'Biology'..."
-    test_search_results = test_query(args.indexdir, u"Biology")
-    print test_search_results
+    print("Test search of whoosh index for 'Biology'...")
+    test_search_results = test_query(args.indexdir, "Biology")
+    print(test_search_results)
     assert(len(test_search_results) > 0)
 
 

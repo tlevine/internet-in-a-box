@@ -66,7 +66,7 @@ def verify_indexes(zim_files, index_dir_base, indexed_count_cache=None, verbose=
 
                     indexed_count = 0
                     logger.debug("Checking indexable against %d articles" % zim_obj.header['articleCount'])
-                    for idx in xrange(zim_obj.header['articleCount']):
+                    for idx in range(zim_obj.header['articleCount']):
                         article_info = zim_obj.read_directory_entry_by_index(idx)
                         if article_info['mimetype'] in mime_type_indexes:
                             indexed_count += 1

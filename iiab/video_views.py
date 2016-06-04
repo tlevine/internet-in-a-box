@@ -77,7 +77,7 @@ def khan_view(khanpath=''):
 
 @blueprint.route('/khanvideo/<path:khanpath>.webm')
 def khan_webm_view(khanpath=''):
-    print("webm_view", khanpath)
+    print(("webm_view", khanpath))
     path = split_khanpath(khanpath)
     tree = get_tree()
     filename = khan.getfile(tree, path)

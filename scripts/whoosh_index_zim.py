@@ -36,9 +36,9 @@ DEFAULT_COMMIT_LIMIT = 1000
 def article_info_as_unicode(articles):
     for article_info in articles:
         # Make any strings into unicode objects
-        for k,v in article_info.items():
+        for k,v in list(article_info.items()):
             if type(v) is str:
-                article_info[k] = unicode(v)
+                article_info[k] = str(v)
         yield article_info
 
 def content_as_text(zim_obj, article_info, index):

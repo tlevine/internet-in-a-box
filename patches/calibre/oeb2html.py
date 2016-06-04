@@ -14,7 +14,7 @@ import os
 
 from functools import partial
 from lxml import html
-from urlparse import urldefrag
+from urllib.parse import urldefrag
 
 from calibre import prepare_string_for_xml
 from calibre.ebooks.oeb.base import XHTML, XHTML_NS, barename, namespace,\
@@ -49,7 +49,7 @@ class OEB2HTML(object):
         return self.mlize_spine(oeb_book)
 
     def mlize_spine(self, oeb_book):
-        output = [u'<html><body><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /></head>']
+        output = ['<html><body><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /></head>']
         for item in oeb_book.spine:
             self.log.debug('Converting %s to HTML...' % item.href)
             self.rewrite_ids(item.data, item)
@@ -68,7 +68,7 @@ class OEB2HTML(object):
         if id:
             href += '#%s' % id
         if href not in self.links:
-            self.links[href] = '#calibre_link-%s' % len(self.links.keys())
+            self.links[href] = '#calibre_link-%s' % len(list(self.links.keys()))
         return self.links[href]
 
     def map_resources(self, oeb_book):
@@ -87,7 +87,7 @@ class OEB2HTML(object):
                 for el in root.iter():
                     attribs = el.attrib
                     try:
-                        if not isinstance(el.tag, basestring):
+                        if not isinstance(el.tag, str):
                             continue
                     except:
                         continue
@@ -122,7 +122,7 @@ class OEB2HTML(object):
                 el.attrib['id'] = self.get_link_id(page.href, el.attrib['id'])[1:]
 
     def get_css(self, oeb_book):
-        css = u''
+        css = ''
         for item in oeb_book.manifest:
             if item.media_type == 'text/css':
                 css = item.data.cssText
@@ -131,10 +131,10 @@ class OEB2HTML(object):
 
     def prepare_string_for_html(self, raw):
         raw = prepare_string_for_xml(raw)
-        raw = raw.replace(u'\u00ad', '&shy;')
-        raw = raw.replace(u'\u2014', '&mdash;')
-        raw = raw.replace(u'\u2013', '&ndash;')
-        raw = raw.replace(u'\u00a0', '&nbsp;')
+        raw = raw.replace('\u00ad', '&shy;')
+        raw = raw.replace('\u2014', '&mdash;')
+        raw = raw.replace('\u2013', '&ndash;')
+        raw = raw.replace('\u00a0', '&nbsp;')
         return raw
 
 
@@ -150,10 +150,10 @@ class OEB2HTMLNoCSSizer(OEB2HTML):
         '''
 
         # We can only processes tags. If there isn't a tag return any text.
-        if not isinstance(elem.tag, basestring) \
+        if not isinstance(elem.tag, str) \
            or namespace(elem.tag) != XHTML_NS:
             p = elem.getparent()
-            if p is not None and isinstance(p.tag, basestring) and namespace(p.tag) == XHTML_NS \
+            if p is not None and isinstance(p.tag, str) and namespace(p.tag) == XHTML_NS \
                     and elem.tail:
                 return [elem.tail]
             return ['']
@@ -182,7 +182,7 @@ class OEB2HTMLNoCSSizer(OEB2HTML):
 
         # Turn the rest of the attributes into a string we can write with the tag.
         at = ''
-        for k, v in attribs.items():
+        for k, v in list(attribs.items()):
             at += ' %s="%s"' % (k, prepare_string_for_xml(v, attribute=True))
 
         # Write the tag.
@@ -234,10 +234,10 @@ class OEB2HTMLInlineCSSizer(OEB2HTML):
         '''
 
         # We can only processes tags. If there isn't a tag return any text.
-        if not isinstance(elem.tag, basestring) \
+        if not isinstance(elem.tag, str) \
            or namespace(elem.tag) != XHTML_NS:
             p = elem.getparent()
-            if p is not None and isinstance(p.tag, basestring) and namespace(p.tag) == XHTML_NS \
+            if p is not None and isinstance(p.tag, str) and namespace(p.tag) == XHTML_NS \
                     and elem.tail:
                 return [elem.tail]
             return ['']
@@ -264,7 +264,7 @@ class OEB2HTMLInlineCSSizer(OEB2HTML):
 
         # Turn the rest of the attributes into a string we can write with the tag.
         at = ''
-        for k, v in attribs.items():
+        for k, v in list(attribs.items()):
             at += ' %s="%s"' % (k, prepare_string_for_xml(v, attribute=True))
 
         # Turn style into strings for putting in the tag.
@@ -313,10 +313,10 @@ class OEB2HTMLClassCSSizer(OEB2HTML):
             output += self.dump_text(item.data.find(XHTML('body')), stylizer, item)
             output.append('\n\n')
         if self.opts.htmlz_class_style == 'external':
-            css = u'<link href="style.css" rel="stylesheet" type="text/css" />'
+            css = '<link href="style.css" rel="stylesheet" type="text/css" />'
         else:
-            css =  u'<style type="text/css">' + self.get_css(oeb_book) + u'</style>'
-        output = [u'<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />'] + [css] + [u'</head><body>'] + output + [u'</body></html>']
+            css =  '<style type="text/css">' + self.get_css(oeb_book) + '</style>'
+        output = ['<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" />'] + [css] + ['</head><body>'] + output + ['</body></html>']
         return ''.join(output)
 
     def dump_text(self, elem, stylizer, page):
@@ -326,10 +326,10 @@ class OEB2HTMLClassCSSizer(OEB2HTML):
         '''
 
         # We can only processes tags. If there isn't a tag return any text.
-        if not isinstance(elem.tag, basestring) \
+        if not isinstance(elem.tag, str) \
            or namespace(elem.tag) != XHTML_NS:
             p = elem.getparent()
-            if p is not None and isinstance(p.tag, basestring) and namespace(p.tag) == XHTML_NS \
+            if p is not None and isinstance(p.tag, str) and namespace(p.tag) == XHTML_NS \
                     and elem.tail:
                 return [elem.tail]
             return ['']
@@ -350,7 +350,7 @@ class OEB2HTMLClassCSSizer(OEB2HTML):
 
         # Turn the rest of the attributes into a string we can write with the tag.
         at = ''
-        for k, v in attribs.items():
+        for k, v in list(attribs.items()):
             at += ' %s="%s"' % (k, prepare_string_for_xml(v, attribute=True))
 
         # Write the tag.

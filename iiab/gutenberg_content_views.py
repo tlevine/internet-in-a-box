@@ -12,7 +12,7 @@ blueprint = Blueprint('gutenberg_content_views', __name__,
 def htmlz(pgid, path):
     htmlz_path = find_htmlz(pgid)
     if htmlz_path is None:
-        print("HTMLZ Path not found " + str(pgid))
+        print(("HTMLZ Path not found " + str(pgid)))
         abort(404)
     zf = zipfile.ZipFile(htmlz_path)
     f = zf.open(path)
@@ -32,7 +32,7 @@ def htmlz(pgid, path):
 def epub(pgid):
     epub_path = find_epub(pgid)
     if epub_path is None:
-        print("EPub Path not found " + str(pgid))
+        print(("EPub Path not found " + str(pgid)))
         abort(404)
     return send_file(epub_path, mimetype='application/epub+zip')
 

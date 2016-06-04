@@ -11,7 +11,7 @@ from random import shuffle
 
 
 def call2(cmd):
-    print "CALL: " + string.join(cmd, ' ')
+    print("CALL: " + string.join(cmd, ' '))
     check_call(cmd)
 
 
@@ -88,7 +88,7 @@ def convert(sources, src_dir, dst_dir, nthreads):
         # spawn up to nthreads jobs
         while len(jobs) < nthreads and len(sources) > 0:
             count += 1
-            print "Starting %i of %i jobs; %i running jobs" % (count, nsources, len(jobs))
+            print("Starting %i of %i jobs; %i running jobs" % (count, nsources, len(jobs)))
             source = sources.pop()
             full_source = os.path.join(src_dir, source)
             output = new_filename(source, dst_dir, '.m4v')
@@ -96,11 +96,11 @@ def convert(sources, src_dir, dst_dir, nthreads):
                 mkdirs(os.path.dirname(output))
                 tmp_output = output + '.incomplete.' + str(os.getpid()) + '.m4v'
                 cmd = convert_command(full_source, tmp_output)
-                print "POPEN: ", string.join(cmd, ' ')
+                print("POPEN: ", string.join(cmd, ' '))
                 p = Popen(cmd)
                 jobs.append((p, tmp_output, output))
             else:
-                print "OUTPUT ALREADY EXISTS: Skipping " + source
+                print("OUTPUT ALREADY EXISTS: Skipping " + source)
 
         # Check for finished jobs
         newjobs = []
@@ -109,7 +109,7 @@ def convert(sources, src_dir, dst_dir, nthreads):
                 # Atomically rename file
                 tmp_output = j[1]
                 output = j[2]
-                print "Completed %s" % (output)
+                print("Completed %s" % (output))
                 os.rename(tmp_output, output)
             else:
                 newjobs.append(j)
@@ -119,7 +119,7 @@ def convert(sources, src_dir, dst_dir, nthreads):
         if len(sources) == 0 and len(jobs) == 0:
             finished = True
         sleep(.5)
-    print "Completed All %i of %i jobs" % (count, nsources)
+    print("Completed All %i of %i jobs" % (count, nsources))
 
 
 parser = OptionParser()

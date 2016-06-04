@@ -9,9 +9,9 @@ from zimpy import ZimFile
 
 
 def replace_paths(top_url, html):
-    replace = u"\\1\\2" + top_url + "/\\3/"
-    html = re.sub(u'(href|src)(=["\']/)([A-Z\-])/', replace, html)
-    html = re.sub(u'(@import[ ]+)(["\']/)([A-Z\-])/', replace, html)
+    replace = "\\1\\2" + top_url + "/\\3/"
+    html = re.sub('(href|src)(=["\']/)([A-Z\-])/', replace, html)
+    html = re.sub('(@import[ ]+)(["\']/)([A-Z\-])/', replace, html)
     return html
 
 

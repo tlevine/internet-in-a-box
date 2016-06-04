@@ -281,7 +281,7 @@ def convert(src, dst, z):
                     except TileNotFoundException:
                         pass
                     except TileInvalidFormat as e:
-                        print("ERROR reading tile: " + e.message)
+                        print(("ERROR reading tile: " + e.message))
             if len(tiles) > 0:
                 meta_save(dst, x, y, z, tiles)
     progress.update(size)

@@ -11,7 +11,7 @@ from random import shuffle
 
 
 def call2(cmd):
-    print "CALL: " + string.join(cmd, ' ')
+    print("CALL: " + string.join(cmd, ' '))
     check_call(cmd)
 
 
@@ -77,7 +77,7 @@ def convert(sources, src_dir, dst_dir, nthreads, kiwix_bin_dir):
         # spawn up to nthreads jobs
         while len(jobs) < nthreads and len(sources) > 0:
             count += 1
-            print "Starting %i of %i jobs; %i running jobs" % (count, nsources, len(jobs))
+            print("Starting %i of %i jobs; %i running jobs" % (count, nsources, len(jobs)))
             source = sources.pop()
             full_source = os.path.join(src_dir, source)
             output = new_dirname(source, dst_dir)
@@ -85,11 +85,11 @@ def convert(sources, src_dir, dst_dir, nthreads, kiwix_bin_dir):
                 tmp_output = output + '.incomplete.' + str(os.getpid())
                 cmd = index_command(kiwix_bin_dir, full_source, tmp_output)
                 #print timestamp() + " RUN: ", string.join(cmd, ' ')
-                print timestamp() + " RUN: ", source
+                print(timestamp() + " RUN: ", source)
                 p = Popen(cmd)
                 jobs.append((p, tmp_output, output))
             else:
-                print "OUTPUT ALREADY EXISTS: Skipping " + source
+                print("OUTPUT ALREADY EXISTS: Skipping " + source)
 
         # Check for finished jobs
         newjobs = []
@@ -99,10 +99,10 @@ def convert(sources, src_dir, dst_dir, nthreads, kiwix_bin_dir):
                     # Atomically rename file
                     tmp_output = j[1]
                     output = j[2]
-                    print timestamp() + " Completed %s" % (output)
+                    print(timestamp() + " Completed %s" % (output))
                     os.rename(tmp_output, output)
                 else:
-                    print "JOB FAILED WITH RETURN CODE " + str(j[0].poll()) + ": " + output
+                    print("JOB FAILED WITH RETURN CODE " + str(j[0].poll()) + ": " + output)
             else:
                 newjobs.append(j)
         jobs = newjobs
@@ -111,7 +111,7 @@ def convert(sources, src_dir, dst_dir, nthreads, kiwix_bin_dir):
         if len(sources) == 0 and len(jobs) == 0:
             finished = True
         sleep(.5)
-    print "Completed All %i of %i jobs" % (count, nsources)
+    print("Completed All %i of %i jobs" % (count, nsources))
 
 
 parser = OptionParser()
@@ -158,11 +158,11 @@ if options.catalog:
         if not os.path.exists(full_source):
             raise full_source + " does not exist"
         if not os.path.exists(index):  # More likely
-            print "ERROR: " + index + " does not exist"
+            print("ERROR: " + index + " does not exist")
         cmd = manage_command(options.kiwix_bin_dir, options.library, full_source, index)
-        print "RUN: ", string.join(cmd, ' ')
+        print("RUN: ", string.join(cmd, ' '))
         p = Popen(cmd)
         r = p.wait()
         if r != 0:
             raise "Error processing command, returned " + str(r) + " : " + string.join(cmd, ' ')
-print "Processing Complete"
+print("Processing Complete")

@@ -151,12 +151,12 @@ def make_symlinks(webm_root, h264_root, symlink_root, extension=".webm"):
             os.makedirs(directory)
         if os.path.exists(webm_dst):
             os.remove(webm_dst)
-        print(webm_src.encode('utf-8'), " -> ", webm_dst.encode('utf-8'))
+        print((webm_src.encode('utf-8'), " -> ", webm_dst.encode('utf-8')))
         os.symlink(webm_src.encode('utf-8'), webm_dst.encode('utf-8'))
         h264_src = os.path.join(h264_root, os.path.splitext(src)[0] + ".m4v")
         h264_dst = os.path.join(symlink_root, dst + ".m4v")
         if os.path.exists(h264_dst):
             os.remove(h264_dst)
-        print(h264_src.encode('utf-8'), " -> ", h264_dst.encode('utf-8'))
+        print((h264_src.encode('utf-8'), " -> ", h264_dst.encode('utf-8')))
         assert(os.path.exists(h264_src.encode('utf-8')))
         os.symlink(h264_src.encode('utf-8'), h264_dst.encode('utf-8'))

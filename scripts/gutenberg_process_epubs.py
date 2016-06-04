@@ -99,18 +99,18 @@ def convert(sources, dst_dir, nthreads):
         # spawn up to nthreads jobs
         while len(jobs) < nthreads and len(sources) > 0:
             count += 1
-            print "Starting %i of %i jobs; %i running jobs" % (count, nsources, len(jobs))
+            print("Starting %i of %i jobs; %i running jobs" % (count, nsources, len(jobs)))
             source = sources.pop()
             output = new_filename(source, dst_dir)
             if not os.path.exists(output):
                 mkdirs(os.path.dirname(output))
                 tmp_output = output + '.incomplete.' + str(os.getpid()) + '.htmlz'
                 cmd = ['ebook-convert', source, tmp_output]
-                print "POPEN: ", string.join(cmd, ' ')
+                print("POPEN: ", string.join(cmd, ' '))
                 p = Popen(cmd)
                 jobs.append((p, tmp_output, output))
             else:
-                print "OUTPUT ALREADY EXISTS: Skipping " + source
+                print("OUTPUT ALREADY EXISTS: Skipping " + source)
 
         # Check for finished jobs
         newjobs = []
@@ -120,10 +120,10 @@ def convert(sources, dst_dir, nthreads):
                 tmp_output = j[1]
                 output = j[2]
                 if os.path.exists(tmp_output):
-		    print "Completed %s" % (output)
+		    print("Completed %s" % (output))
 		    os.rename(tmp_output, output)
                 else:
-                    print "JOB FAILED NO OUTPUT FILE " + tmp_output
+                    print("JOB FAILED NO OUTPUT FILE " + tmp_output)
             else:
                 newjobs.append(j)
         jobs = newjobs
@@ -132,7 +132,7 @@ def convert(sources, dst_dir, nthreads):
         if len(sources) == 0 and len(jobs) == 0:
             finished = True
         sleep(.5)
-    print "Completed All %i of %i jobs" % (count, nsources)
+    print("Completed All %i of %i jobs" % (count, nsources))
 
 
 def main(argv):
@@ -161,22 +161,22 @@ def main(argv):
     htmlz_images_dir = os.path.join(modules_dir, 'gutenberg-htmlz-images')
 
     if not os.path.exists(cache_mirror_dir):
-        print "ERROR: could not find gutenberg cache mirror at " + cache_mirror_dir
+        print("ERROR: could not find gutenberg cache mirror at " + cache_mirror_dir)
         return(-1)
 
     if 1 in stages:
-        print "STAGE 1: Copying epubs out of mirror"
+        print("STAGE 1: Copying epubs out of mirror")
         if os.path.exists(epub_dir):
-            print epub_dir + " already exists.  You must remove it."
+            print(epub_dir + " already exists.  You must remove it.")
             return -2
         if os.path.exists(epub_images_dir):
-            print epub_images_dir + " already exists.  You must remove it."
+            print(epub_images_dir + " already exists.  You must remove it.")
             return -2
         os.makedirs(epub_dir)
         os.makedirs(epub_images_dir)
-        print "Finding epubs in " + cache_mirror_dir + "..."
+        print("Finding epubs in " + cache_mirror_dir + "...")
         epubs = find_files(cache_mirror_dir)
-        print "Copying epubs to " + epub_dir + " and " + epub_images_dir + "..."
+        print("Copying epubs to " + epub_dir + " and " + epub_images_dir + "...")
         progress = progress_bar("Copying " + str(len(epubs)) + " epubs", len(epubs))
         count = 0
         for filename in epubs:
@@ -185,7 +185,7 @@ def main(argv):
             copy_epub(filename, epub_dir, epub_images_dir)
 
     if 2 in stages:
-        print "STAGE 2: Converting epubs (no images) to htmlz"
+        print("STAGE 2: Converting epubs (no images) to htmlz")
         mkdirs(htmlz_dir)
         epubs = find_files(epub_dir)
         # We shuffle the processing order so we can run from multiple nodes
@@ -194,7 +194,7 @@ def main(argv):
         convert(epubs, htmlz_dir, options.threads)
 
     if 3 in stages:
-        print "STAGE 3: Converting epubs including images to htmlz"
+        print("STAGE 3: Converting epubs including images to htmlz")
         mkdirs(htmlz_images_dir)
         epubs = find_files(epub_images_dir)
         # We shuffle the processing order so we can run from multiple nodes

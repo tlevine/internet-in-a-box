@@ -18,7 +18,7 @@ def test_query(indexdir, terms):
     with whoosh_index.searcher() as searcher:
         query = QueryParser(SEARCH_FIELD, whoosh_index.schema).parse(terms)
         results = searcher.search(query)
-        return [r.items() for r in results]
+        return [list(r.items()) for r in results]
         #return [dict(r.items()) for r in results]
 
 def get_schema():
@@ -38,7 +38,7 @@ def get_schema():
         longitude=STORED,
         country_code=TEXT(stored=True),
         admin1_code=TEXT(stored=True),
-        population=NUMERIC(long, stored=True) 
+        population=NUMERIC(int, stored=True) 
         )
 
 def load_feature_code_whitelist(filename):
@@ -48,11 +48,11 @@ def load_feature_code_whitelist(filename):
 
         # remove leading/trailing whitespace
         chomper = lambda v: v.strip()
-        tag_list = map(chomper, tag_list)
+        tag_list = list(map(chomper, tag_list))
 
         # remove empty lines
         remove_zero_length_items = lambda v: len(v) > 0
-        tag_list = filter(remove_zero_length_items, tag_list)
+        tag_list = list(filter(remove_zero_length_items, tag_list))
 
         # convert list to dict for fast membership testing
         tag_dict = { k : 1 for k in tag_list }
@@ -73,7 +73,7 @@ class WhooshGenerator:
         self.writer.add_document(**record)
 
     def commit(self):
-        print 'committing... (this may take some time)'
+        print('committing... (this may take some time)')
         self.writer.commit()
 
 class StdoutGenerator:
@@ -81,7 +81,7 @@ class StdoutGenerator:
         pass
 
     def write(self, record):
-        print record
+        print(record)
 
     def commit(self):
         pass
@@ -146,7 +146,7 @@ def parse_geo(geo, index_dir, whitelist_filename):
         generator.setup(index_dir, schema)
         for count, line in enumerate(f):
             line = line.rstrip()
-            record = dict(zip(field_names, line.split('\t')))
+            record = dict(list(zip(field_names, line.split('\t'))))
 
             # Note that whitelist filter should be applied before filtering out non-schema fields
             if passes_whitelist(record, feature_code_whitelist):
@@ -159,7 +159,7 @@ def parse_geo(geo, index_dir, whitelist_filename):
                 record[NGRAM_FIELDNAME] = record[NGRAM_SRC_FIELD]
 
                 # remove fields not stored in the schema
-                pruned_record = { k: v for k,v in record.items() if k in schema }
+                pruned_record = { k: v for k,v in list(record.items()) if k in schema }
                 generator.write(pruned_record)
             else:
                 omitted_count += 1
@@ -167,14 +167,14 @@ def parse_geo(geo, index_dir, whitelist_filename):
             # print progress
             if count & 0x3ff == 0:  # every 1024 records
                 if count & 0x1ffff == 0: # every 131072 records
-                    print count,
+                    print(count, end=' ')
                 else:
-                    print '.',
+                    print('.', end=' ')
 
-        print 'parsing complete'
-        print 'omitted %d items' % omitted_count
+        print('parsing complete')
+        print('omitted %d items' % omitted_count)
         generator.commit()
-        print 'done'
+        print('done')
         
 
 if __name__ == '__main__':
@@ -200,9 +200,9 @@ if __name__ == '__main__':
     if not args.testonly:
         parse_geo(args.geo, args.indexdir, args.whitelist_filename)
 
-    print "Test search of whoosh index for 'Los Angeles'..."
-    test_search_results = test_query(args.indexdir, u"Los Angeles")
-    print test_search_results
+    print("Test search of whoosh index for 'Los Angeles'...")
+    test_search_results = test_query(args.indexdir, "Los Angeles")
+    print(test_search_results)
     assert(len(test_search_results) > 0)
 
 

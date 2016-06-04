@@ -19,7 +19,7 @@ class GutenbergIndexFilter(object):
             has_title = 'title' in record and len(record['title']) > 0
             if not has_title:
                 self.removed_texts.append(record['textId'])
-                print "[omit %s notitle]" % record['textId']
+                print("[omit %s notitle]" % record['textId'])
                 self.notitle_count += 1
             return has_title
         else:
@@ -35,16 +35,16 @@ class GutenbergIndexFilter(object):
 
             # seems ugly - would multiple filters be better?  or maybe a filter stage followed by a transform stage?
             if record['file'].startswith('http'):
-                print "[file prefix unexpected %s]" % record['file']
+                print("[file prefix unexpected %s]" % record['file'])
 
             # omit files based on three criteria:
             # (a) book description was omitted due to filter criteria above
             # (b) rsync script excluded the content (extensions and 'pgdvd')
             # (c) rsync script excluded the cached content (extensions and 'pgdvd')
             return (record['textId'] not in self.removed_texts and 
-                u'pgdvd' not in record['file'] and
+                'pgdvd' not in record['file'] and
                 not self.extension_match(record['file'], self.EXCLUDED_EXT) and
-                (not record['file'].startswith(u'data/cache/') or not self.extension_match(record['file'], self.CACHE_EXCLUDED_EXT)))
+                (not record['file'].startswith('data/cache/') or not self.extension_match(record['file'], self.CACHE_EXCLUDED_EXT)))
                 
     def is_description_record(self, record):
         return record['record_type'] == 'DESCRIPTION'

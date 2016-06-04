@@ -31,7 +31,7 @@ def main(csv_filename, json_filename, always_overwrite):
         write_json(sys.stdout, records)
     else:
         if not always_overwrite and os.path.exists(json_filename):
-            answer = raw_input("Confirm overwrite of " + json_filename + " (y/[n])")
+            answer = input("Confirm overwrite of " + json_filename + " (y/[n])")
             if answer != 'y' or answer != 'Y':
                 exit()
 
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     (options, args) = parser.parse_args()
 
     if options.csv_filename == '-' and options.json_filename != '-' and not options.always_overwrite:
-        print "ERROR: Since stdin is used for program input, cannot ask for overwrite confirmation.  Must specify the force overwrite option in this configuration."
+        print("ERROR: Since stdin is used for program input, cannot ask for overwrite confirmation.  Must specify the force overwrite option in this configuration.")
         exit(1)
 
     main(options.csv_filename, options.json_filename, options.always_overwrite)

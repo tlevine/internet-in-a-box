@@ -49,13 +49,13 @@ class GutenbergDbCreator:
             """ Return comma separated columns and def for SQL create """
             return ','.join([' '.join(col_name_and_type) for col_name_and_type in col_schema])
 
-        for table_name, schema in schema_map.items():
-            print "creating table " + table_name
+        for table_name, schema in list(schema_map.items()):
+            print("creating table " + table_name)
             self.db.execute("DROP TABLE IF EXISTS %s" % table_name)
             sql_create = "CREATE TABLE %s(%s)" % (table_name, 
                     collect_columns_from_schema(schema))
             if self.debug:
-                print sql_create
+                print(sql_create)
             self.db.execute(sql_create)
 
     def _create_many2many_tables(self, main_schema, aux_schemas):
@@ -72,11 +72,11 @@ class GutenbergDbCreator:
         CREATE_TABLE_TEMPLATE = ("CREATE TABLE {table_name}({book_id_name} INT REFERENCES {main_table_name}(textId) ON DELETE CASCADE, "
                 "{aux_id_name} INT REFERENCES {aux_table_name}(id) ON DELETE CASCADE, PRIMARY KEY({book_id_name},{aux_id_name}))")
         for main_table_name in main_schema:
-            for aux_table_name, aux_cols in aux_schemas.items():
+            for aux_table_name, aux_cols in list(aux_schemas.items()):
                 # Assumed aux tables only contain two columns, the second of which describes the unique content
                 column_name = self._get_aux_table_unique_column_name(aux_cols)
                 table_name = "{0}_{1}_map".format(main_table_name, column_name)
-                print "creating many-to-many mapping table " + table_name
+                print("creating many-to-many mapping table " + table_name)
 
                 # column names
                 book_id_name = "book_id"
@@ -86,7 +86,7 @@ class GutenbergDbCreator:
                 sql_create =  CREATE_TABLE_TEMPLATE.format(table_name=table_name, main_table_name=main_table_name, 
                         book_id_name=book_id_name, aux_table_name=aux_table_name, aux_id_name=aux_id_name)
                 if self.debug:
-                    print sql_create
+                    print(sql_create)
                 self.db.execute(sql_create)
 
                 # record association between mapping table and auxiliary table
@@ -132,12 +132,12 @@ class GutenbergDbCreator:
         Inserts the many-to-many association between book_id and aux_id
         """
         assert(len(self.mapping_table_lookup[aux_table_name]) == 1) # expects one mapping table else must revise
-        for map_table_name, map_col_names in self.mapping_table_lookup[aux_table_name].items():
+        for map_table_name, map_col_names in list(self.mapping_table_lookup[aux_table_name].items()):
             (book_id_name, aux_id_name) = map_col_names
             insertSql = "INSERT INTO {0} ({1},{2}) VALUES (:{1}, :{2})".format(map_table_name, book_id_name, aux_id_name)
             values = { book_id_name : book_id, aux_id_name : aux_id }
             if self.debug:
-                print insertSql, values
+                print(insertSql, values)
             cursor.execute(insertSql, values)
 
     def _select_id_or_insert(self, cursor, selectSql, insertSql, col_name, value):
@@ -181,7 +181,7 @@ class GutenbergDbCreator:
 
         if self.is_book_description(record):
             # insert main book entry
-            for table_name, col_schema in self.MAIN_TABLE_SCHEMA.items():
+            for table_name, col_schema in list(self.MAIN_TABLE_SCHEMA.items()):
                 insertSql = self._create_insert_sql(table_name, col_schema)
 
                 # some titles include multiple entries (perhaps because of translations)
@@ -189,37 +189,37 @@ class GutenbergDbCreator:
                 for cname in ['title', 'friendlytitle']:
                     v = record[cname]
                     if isinstance(v, (list, tuple)):
-                        record[cname] = u' / '.join(v)
+                        record[cname] = ' / '.join(v)
                 
                 if self.debug:
-                    print insertSql, record
+                    print(insertSql, record)
                 cursor.execute(insertSql, record)
                 book_id = record['textId']  # used below when inserting fields into aux tables
 
             # insert aux entries.  more than one data value may exist for each column in a record
-            for table_name, col_schema in self.AUX_TABLE_SCHEMA.items():
+            for table_name, col_schema in list(self.AUX_TABLE_SCHEMA.items()):
                 insertSql = self._create_insert_sql(table_name, col_schema)
                 if self.debug:
-                    print insertSql
+                    print(insertSql)
                 col_name = self._get_aux_table_unique_column_name(col_schema)
                 selectSql = "SELECT id FROM %s WHERE %s=?" % (table_name, col_name)
                 values = record[col_name]
                 # if list of values insert each in turn
-                if not isinstance(values, basestring):
+                if not isinstance(values, str):
                     for value in values:
                         aux_id = self._select_id_or_insert(cursor, selectSql, insertSql, col_name, value)
                         self._insert_mapping_from_book_to_aux(cursor, table_name, book_id, aux_id)
                 # otherwise insert the single value
                 else:
                     if self.debug:
-                        print selectSql, values
+                        print(selectSql, values)
                     aux_id = self._select_id_or_insert(cursor, selectSql, insertSql, col_name, values)
                     self._insert_mapping_from_book_to_aux(cursor, table_name, book_id, aux_id)
         else: # record_type is FILE type
-            for table_name, col_schema in self.FILE_TABLE_SCHEMA.items():
+            for table_name, col_schema in list(self.FILE_TABLE_SCHEMA.items()):
                 # if format is list, merge to newline delimited field
-                if not isinstance(record['format'], basestring):
-                    record['format'] = u"\n".join(record['format'])
+                if not isinstance(record['format'], str):
+                    record['format'] = "\n".join(record['format'])
                 insertSql = self._create_insert_sql(table_name, col_schema)
                 cursor.execute(insertSql, record)
 
@@ -233,32 +233,32 @@ class GutenbergDbCreator:
         sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)   # don't buffer stdout
 
         cursor = self.db.cursor()
-        print "Bulk adding records"
+        print("Bulk adding records")
         try:
             for count, record in enumerate(record_list):
                 self.add_record(record, cursor)
                 if (count % 10000) == 0:
-                    print count,
-            print "\n%d records added." % (count + 1)
-            print "Removing books which have all files filtered out..."
+                    print(count, end=' ')
+            print("\n%d records added." % (count + 1))
+            print("Removing books which have all files filtered out...")
 
             # Now remove books for which we don't have any files records. TODO: Verify that a lack of
             # file entries is always a result of our filtering.  If we need to discover files through
             # some means other than a file record in the gutenberg index this may need to change.
             # TODO: Remove aux and mapping table entries associated with removed books.
             (number_of_books_without_files,) = cursor.execute('select count(BOOKS.textId) from gutenberg_books as BOOKS where (select count(*) from gutenberg_files as FILES where FILES.textId=BOOKS.textId) == 0;').fetchone()
-            print "Number of books without files %d." % number_of_books_without_files
+            print("Number of books without files %d." % number_of_books_without_files)
             removed_count = cursor.execute('delete from gutenberg_books where(select count(*) from gutenberg_files as FILES where FILES.textId=gutenberg_books.textId)==0').rowcount
-            print "Removed %d records." % removed_count
+            print("Removed %d records." % removed_count)
             if number_of_books_without_files != removed_count:
-                print "WARNING: NUMBER OF RECORDS REMOVED DOES NOT MATCH NUMBER OF BOOKS WITHOUT FILES"
-            print "Committing..."
+                print("WARNING: NUMBER OF RECORDS REMOVED DOES NOT MATCH NUMBER OF BOOKS WITHOUT FILES")
+            print("Committing...")
         finally:
             # always commit rather than rollback if sqlite3.DatabaseError because easier to debug
             self.db.commit()
 
     def create_custom_title_order_index(self):
-        print "Populating title_order column using lowercase title without punctuation"
+        print("Populating title_order column using lowercase title without punctuation")
         remove_punctuation_map = dict((ord(char), None) for char in string.punctuation)
 
         try:
@@ -271,7 +271,7 @@ class GutenbergDbCreator:
 
             cur.execute("CREATE INDEX title_index ON gutenberg_books (title_order);")
             self.db.commit()
-            print "completed"
+            print("completed")
         except:
             self.db.rollback()
             raise
@@ -290,7 +290,7 @@ class GutenbergDbCreator:
             cursor.execute(insert_sql)
             cursor.execute(update_sql)
 
-        print "stored downloads per creator/contributor for sorting"
+        print("stored downloads per creator/contributor for sorting")
         try: 
             cur = self.db.cursor()
             cur.execute('CREATE TEMP TABLE temp_counts (id int primary key, downloads int);')
@@ -302,7 +302,7 @@ class GutenbergDbCreator:
             raise
 
     def create_additional_indices(self):
-        print "creating indices for creator and contributors"
+        print("creating indices for creator and contributors")
         try:
             cur = self.db.cursor()
             sql = "CREATE INDEX {0}_index ON gutenberg_{1}({0});"
@@ -328,7 +328,7 @@ def main():
     index_filter = GutenbergIndexFilter()
     make_db.add_many_records(parse_rdf_bz2(options.bz2_rdf_filename, index_filter.filter))
     if index_filter.notitle_count > 0:
-        print "Omitted %d records without titles" % index_filter.notitle_count
+        print("Omitted %d records without titles" % index_filter.notitle_count)
 
     make_db.create_custom_title_order_index()
     make_db.compute_author_downloads()

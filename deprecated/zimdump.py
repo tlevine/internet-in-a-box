@@ -40,7 +40,7 @@ def get_article_info_by_url(zimfile, namespace, url, cwd='.'):
     p = Popen(cmd, stdout=PIPE, cwd=cwd)
     data = p.stdout.read()
     if len(data) == 0:
-        print "ZERO LENGTH FILE"
+        print("ZERO LENGTH FILE")
         return None
     return parse_zimdump_info(data)
 
@@ -69,7 +69,7 @@ def get_article_info_by_index(zimfile, idx, cwd='.'):
     p = Popen(cmd, stdout=PIPE, cwd=cwd)
     data = p.stdout.read()
     if len(data) == 0:
-        print "ZERO LENGTH FILE"
+        print("ZERO LENGTH FILE")
         return None
     return parse_zimdump_info(data)
 
@@ -84,7 +84,7 @@ def get_article_data_by_index(zimfile, index, cwd='.'):
     p = Popen(cmd, stdout=PIPE, cwd=cwd)
     data = p.stdout.read()
     if len(data) == 0:
-        print "ZERO LENGTH FILE"
+        print("ZERO LENGTH FILE")
     return data
 
 
@@ -107,9 +107,9 @@ def get_article_by_index(zimfile, idx, cwd='.'):
 
 
 def replace_paths(top_url, html):
-    replace = u"\\1\\2" + top_url + "/\\3/"
-    html = re.sub(u'(href|src)(=["\']/)([A-Z\-])/', replace, html)
-    html = re.sub(u'(@import[ ]+)(["\']/)([A-Z\-])/', replace, html)
+    replace = "\\1\\2" + top_url + "/\\3/"
+    html = re.sub('(href|src)(=["\']/)([A-Z\-])/', replace, html)
+    html = re.sub('(@import[ ]+)(["\']/)([A-Z\-])/', replace, html)
     return html
 
 

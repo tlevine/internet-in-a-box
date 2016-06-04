@@ -30,7 +30,7 @@ def progress_bar(name, maxval):
 
 
 # Regex to match references to other articles
-regex = re.compile(u'(?:href|src)(?:=["\']/)([A-Z\-])/([^"\']+)')
+regex = re.compile('(?:href|src)(?:=["\']/)([A-Z\-])/([^"\']+)')
 
 
 def find_urls(html):
@@ -52,7 +52,7 @@ def process2(zf, namespaces=['A']):
 
     articles = zf.articles()
     for entry in articles:
-        if 'redirectIndex' not in entry.keys() and entry['mimetype'] in mime_indices and entry['namespace'] in namespaces:
+        if 'redirectIndex' not in list(entry.keys()) and entry['mimetype'] in mime_indices and entry['namespace'] in namespaces:
             body = zf.read_blob(entry['clusterNumber'], entry['blobNumber'])
             body = body.decode('utf-8', errors='replace')
             urls = find_urls(body)
@@ -70,7 +70,7 @@ def process2(zf, namespaces=['A']):
                     links[full] = (link[0] + 1, link[1])
 
             progress.update(entry['index'])
-    print
+    print()
     return links
 
 
@@ -92,8 +92,8 @@ def output2(fname, zf, links):
             f.write(s)
     f.close()
     if not_found > 0:
-        print
-        print "WARNING: " + str(not_found) + " referenced articles not found by URL"
+        print()
+        print("WARNING: " + str(not_found) + " referenced articles not found by URL")
 
 
 def main(argv):
@@ -108,7 +108,7 @@ def main(argv):
     (options, args) = parser.parse_args()
 
     if options.version:
-        print "Internet-in-a-Box Version " + iiab.__version__
+        print("Internet-in-a-Box Version " + iiab.__version__)
         return 0
 
     # Set up logging
@@ -119,7 +119,7 @@ def main(argv):
         timepro.global_active = True
 
     for zim_filename in args:
-        print "Processing " + zim_filename
+        print("Processing " + zim_filename)
         t0 = time.time()
 
         zf = ZimFile(zim_filename, cache_size=1024)
@@ -129,12 +129,12 @@ def main(argv):
         outname += ".links"
         outname = os.path.join(options.outputdir, outname)
         if os.path.exists(outname):
-            print "Skipping " + zim_filename + " because output file " + outname + " already exists"
+            print("Skipping " + zim_filename + " because output file " + outname + " already exists")
         else:
             links = process2(zf)
             output2(outname, zf, links)
-        print zim_filename + " completed in " + str((time.time() - t0)/60.0) + " minutes"
-        print
+        print(zim_filename + " completed in " + str((time.time() - t0)/60.0) + " minutes")
+        print()
 
 
 if __name__ == '__main__':

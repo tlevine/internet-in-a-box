@@ -127,14 +127,14 @@ def cities_to_tiles(cities, zoom, tile_range=8):
         for tile in tile_list:
             meta = xyz_to_meta(tile[0], tile[1], tile[2])
             if hash(meta) not in tiles:
-                print "%i %i %i" % meta
+                print("%i %i %i" % meta)
                 tiles.add(hash(meta))
     return
 
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print "USAGE: render_cities.py <zoom> <range>"
+        print("USAGE: render_cities.py <zoom> <range>")
         sys.exit(-1)
     zoom = int(sys.argv[1])
     tile_range = int(sys.argv[2])

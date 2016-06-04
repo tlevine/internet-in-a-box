@@ -51,9 +51,9 @@ def get_nested_content(element):
     """
     if len(element) == 0:
         if element.text is not None:
-            return [unicode(element.text)]
+            return [str(element.text)]
         else:
-            print element.tag + " has no content"
+            print(element.tag + " has no content")
             return []
     else:
         content = []
@@ -77,7 +77,7 @@ def get_content(etext, tag, nsmap):
     for element in tag_iter:
         if len(element) == 0:
             if element.text is not None:
-                content.append(unicode(element.text))
+                content.append(str(element.text))
         else:
             content.extend(get_nested_content(element))
 
@@ -131,13 +131,13 @@ def parse_rdf(src, filter=None):
         if event == 'end' and element.tag == ETEXT_TAG:
             assert(root is not None)
         
-            record = { REC_TYPE_KEY : DESCRIPTION_TYPE_VALUE, REC_ETEXT_ID : unicode(element.attrib[ID_ATTRIB]) }
-            for xmltag, rectag in ETEXT_MAPPINGS.items():
+            record = { REC_TYPE_KEY : DESCRIPTION_TYPE_VALUE, REC_ETEXT_ID : str(element.attrib[ID_ATTRIB]) }
+            for xmltag, rectag in list(ETEXT_MAPPINGS.items()):
                 content = get_content(element, xmltag, root.nsmap)
                 if len(content) == 1:
                     content = content[0]
                 record[rectag] = content
-            if filter is None or filter(record):
+            if filter is None or list(filter(record)):
                 yield record
         elif event == 'end' and element.tag == FILE_TAG:
             assert(root is not None)
@@ -146,8 +146,8 @@ def parse_rdf(src, filter=None):
             # http://www.gutenberg.org/dir seems to equate to /knowledge/data/gutenberg/gutenberg
             # http://www.gutenberg.org/cache seems to equate to generated content not available via mirror 
             # but separately rsync'd from the web and stored at /knowledge/data/gutenberg/cache.
-            record = { REC_TYPE_KEY : FILE_TYPE_VALUE, REC_FILE_PATH : unicode(element.attrib[ABOUT_ATTRIB]) }
-            for xmltag, rectag in FILE_MAPPINGS.items():
+            record = { REC_TYPE_KEY : FILE_TYPE_VALUE, REC_FILE_PATH : str(element.attrib[ABOUT_ATTRIB]) }
+            for xmltag, rectag in list(FILE_MAPPINGS.items()):
                 if xmltag == FORMATOF_TAG:
                     content = element.find(xmltag, namespaces=root.nsmap).attrib[RDF_RESOURCE_ATTRIB]
                 else:
@@ -155,7 +155,7 @@ def parse_rdf(src, filter=None):
                     if len(content) == 1:
                         content = content[0]
                 record[rectag] = content
-            if filter is None or filter(record):
+            if filter is None or list(filter(record)):
                 yield record
 
 if __name__ == '__main__':
@@ -163,15 +163,15 @@ if __name__ == '__main__':
     pp = pprint.PrettyPrinter(indent=4)
 
     if (len(sys.argv) != 2 or sys.argv[1] == '-h' or sys.argv[1] == '--help'):
-        print """
+        print("""
         Parsed Gutenberg RDF index file into python records. Standalone prints
         records to STDOUT. This module also provides a service for other scripts.
 
         Usage: %s catalog.rdf.bz2
-        """ % sys.argv[0]
+        """ % sys.argv[0])
         exit()
     filename = sys.argv[1]
     for record in parse_rdf_bz2(filename):
-        print record
+        print(record)
         #pp.pprint(record)
 
